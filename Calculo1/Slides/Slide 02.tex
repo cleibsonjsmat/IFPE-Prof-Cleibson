@@ -1,0 +1,265 @@
+\documentclass[10pt,aspectratio=169]{beamer}
+
+% --- PACOTES E CONFIGURAÇÕES ---
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+% --- TEMA E PALETA DE CORES INSTITUCIONAL (IFPE) ---
+\usetheme{Madrid}
+
+% Cor Primária Verde IFPE
+\definecolor{ifpegreen}{RGB}{14, 114, 52}
+\definecolor{ifpedark}{RGB}{30, 41, 59}
+\definecolor{ifpelight}{RGB}{241, 245, 249}
+\definecolor{ifpeaccent}{RGB}{220, 38, 38}
+
+% Configuração das cores do Beamer
+\setbeamercolor{palette primary}{bg=ifpegreen,fg=white}
+\setbeamercolor{palette secondary}{bg=ifpegreen!85,fg=white}
+\setbeamercolor{palette tertiary}{bg=ifpegreen!70,fg=white}
+\setbeamercolor{palette quaternary}{bg=ifpegreen,fg=white}
+
+\setbeamercolor{title}{bg=ifpegreen,fg=white}
+\setbeamercolor{frametitle}{bg=ifpegreen,fg=white}
+\setbeamercolor{structure}{fg=ifpegreen}
+
+% Blocos e caixas de destaque
+\setbeamercolor{block title}{bg=ifpegreen,fg=white}
+\setbeamercolor{block body}{bg=ifpelight,fg=ifpedark}
+
+\setbeamercolor{block title example}{bg=ifpedark,fg=white}
+\setbeamercolor{block body example}{bg=ifpelight,fg=ifpedark}
+
+\setbeamercolor{block title alerted}{bg=ifpeaccent,fg=white}
+\setbeamercolor{block body alerted}{bg=ifpelight,fg=ifpedark}
+
+% --- INFORMAÇÕES DO SLIDE ---
+\title[Cálculo I]{Definição de Limite}
+\subtitle{Cálculo Diferencial e Integral I}
+\author{Prof. Cleibson Silva}
+\institute[IFPE]{Instituto Federal de Pernambuco -- Campus Caruaru}
+\date{}
+
+\begin{document}
+
+% --- SLIDE 1: TÍTULO ---
+\begin{frame}
+    \transdissolve
+    \titlepage
+\end{frame}
+
+% --- SLIDE 2: DEFINIÇÃO 1.1 ---
+\begin{frame}{Definição Intuitiva de Limite}
+    \transblindshorizontal
+    Dada uma função real $f$, estamos interessados em saber o que acontece com o valor de $f(x)$ quando $x$ se aproxima de um ponto $c$ sem, entretanto, assumir este valor.
+
+    \vspace{0.2cm}\pause
+    \begin{block}{Definição 1.1 (Limite)}
+        Seja $f$ uma função real definida perto de $c \in \mathbb{R}$ (mas não necessariamente definida em $c$). Dizemos que o \textbf{limite de $f(x)$ quando $x$ tende a $c$ é igual a $L \in \mathbb{R}$}, denotado por:
+        $$\lim_{x \to c} f(x) = L \quad \text{ou} \quad f(x) \to L \text{ quando } x \to c$$
+        se $f(x)$ fica tão próximo de $L$ quanto quisermos para todo $x$ suficientemente próximo de $c$, mas $x \neq c$.
+    \end{block}
+
+    \vspace{0.3cm}\pause
+    \alert{\textbf{Observação:}} O valor da função no ponto $f(c)$ não importa para o cálculo do limite!
+\end{frame}
+
+% --- SLIDE 3: LIMITES LATERAIS ---
+\begin{frame}{Limites Laterais e Existência}
+    \transfade
+    \begin{block}{Definição 1.2 (Limites Laterais pela Direita e Esquerda)}
+        Dizemos que o limite de $f(x)$ quando $x$ tende a $c$ pela **direita** (ou **esquerda**) é $L$, denotado por:
+        $$\lim_{x \to c^+} f(x) = L \quad (x > c) \qquad \text{ou} \qquad \lim_{x \to c^-} f(x) = L \quad (x < c)$$
+    \end{block}
+
+    \vspace{0.3cm}\pause
+    \begin{alertblock}{Lema 1.3 (Relação com Limites Laterais)}
+        Existe $\lim_{x \to c} f(x)$ se, e somente se, existem os limites laterais e eles são iguais:
+        $$\lim_{x \to c^+} f(x) = \lim_{x \to c^-} f(x) = L$$
+    \end{alertblock}
+\end{frame}
+
+% --- SLIDE 4: EXEMPLO 1.1 ---
+\begin{frame}{Exemplo 1.1: Furos no Domínio e Cancelamento}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.1}
+        Esboce o gráfico e determine (caso exista):
+        \vspace{0.2cm}
+        \begin{columns}[t]
+            \begin{column}{0.48\textwidth}
+                \begin{enumerate}[(a)]
+                    \item $\lim_{x \to 2} \frac{x}{x}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to 0} \frac{x}{x}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to -3} \frac{x^2}{x}$
+                \end{enumerate}
+            \end{column}
+            \begin{column}{0.48\textwidth}
+                \begin{enumerate}[(d)]
+                    \pause
+                    \item $\lim_{x \to 0} \frac{x^2}{x}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to -2} \frac{x}{x^2}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to 0} \frac{x}{x^2}$
+                \end{enumerate}
+            \end{column}
+        \end{columns}
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 5: EXEMPLO 1.2 ---
+\begin{frame}{Exemplo 1.2: Funções Definidas por Partes}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.2}
+        Para cada item abaixo, esboce o gráfico de $f(x)$ e determine (caso existam) $\lim_{x \to c^+} f(x)$, $\lim_{x \to c^-} f(x)$ e $\lim_{x \to c} f(x)$:
+        \vspace{0.2cm}
+        \begin{enumerate}[(a)]
+            \item $c=0, 1, 0.9999, 1.0001$ de $f(x) = \begin{cases} 2, & x < 1 \\ -3, & x \ge 1 \end{cases}$
+            \vspace{0.15cm}\pause
+            \item $c=2, 0$ de $f(x) = \begin{cases} \frac{x}{x}, & x \neq 0 \\ -2, & x = 0 \end{cases}$
+            \vspace{0.15cm}\pause
+            \item $c=0.0001, -0.0001, 0$ de $f(x) = \begin{cases} -1, & x \neq 0 \\ 3, & x = 0 \end{cases}$
+            \vspace{0.15cm}\pause
+            \item $c=0.99, 1.01, 1$ de $f(x) = \begin{cases} x, & x \le 1 \\ 4-x, & x > 1 \end{cases}$
+        \end{enumerate}
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 6: EXEMPLO 1.3 ---
+\begin{frame}{Exemplo 1.3: Indeterminações do Tipo $0/0$}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.3}
+        Determine os limites:
+        \vspace{0.2cm}
+        \begin{columns}[t]
+            \begin{column}{0.48\textwidth}
+                \begin{enumerate}[(a)]
+                    \item $\lim_{x \to 2} \frac{x^2-3x+2}{x^2-4}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to -1} \frac{x^3+1}{x+1}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{y \to 3} \frac{\frac{1}{y}-\frac{1}{3}}{y-3}$
+                \end{enumerate}
+            \end{column}
+            \begin{column}{0.48\textwidth}
+                \begin{enumerate}[(d)]
+                    \pause
+                    \item $\lim_{h \to 0} \frac{(x+h)^3 - x^3}{h}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{t \to 1} \frac{t^2-t^3+t-1}{t^2-2t+1}$
+                    \vspace{0.2cm}\pause
+                    \item $\lim_{x \to -1} f(x)$ se $f(x)=\begin{cases} \frac{x^6-1}{x+1}, & x \neq -1 \\ 4, & x = -1 \end{cases}$
+                \end{enumerate}
+            \end{column}
+        \end{columns}
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 7: EXEMPLO 1.4 & 1.5 ---
+\begin{frame}{Exemplos 1.4 e 1.5: Função Módulo e Racionalização}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.4 (Módulo)}
+        Esboce o gráfico e determine (caso exista):
+        \begin{columns}[t]
+            \begin{column}{0.5\textwidth}
+                \begin{enumerate}[(a)]
+                    \item $\lim_{x \to 0^-} \frac{x}{|x|}$
+                    \item $\lim_{x \to 0^+} \frac{x}{|x|}$
+                    \item $\lim_{x \to 0} |x^2-9|$
+                \end{enumerate}
+            \end{column}
+            \begin{column}{0.5\textwidth}
+                \begin{enumerate}[(d)]
+                    \item $\lim_{x \to -3} |x^2-9|$
+                    \item $\lim_{x \to -3} \frac{|x^2-9|}{x+3}$
+                    \item $\lim_{x \to \pi^+} \frac{\sin(x)}{|\sin(x)|}$
+                \end{enumerate}
+            \end{column}
+        \end{columns}
+    \end{exampleblock}
+
+    \vspace{0.2cm}\pause
+    \begin{exampleblock}{Exemplo 1.5 (Racionalização)}
+        Determine os limites:
+        \quad (a) $\lim_{h \to 0} \frac{\sqrt{h+1}-1}{h}$ \qquad (b) $\lim_{x \to 9} \frac{x-9}{\sqrt{x}-3}$
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 8: EXEMPLO 1.6 & 1.7 ---
+\begin{frame}{Exemplos 1.6 e 1.7: Funções Compostas e Exponenciais}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.6}
+        Esboce o gráfico de $f(x) = \begin{cases} \sqrt{9-x^2}, & |x| \le 3 \\ x, & x > 3 \\ 0, & x < -3 \end{cases}$ e determine os limites laterais em $c=3$ e $c=-3$.
+    \end{exampleblock}
+
+    \vspace{0.2cm}\pause
+    \begin{exampleblock}{Exemplo 1.7}
+        Esboce o gráfico e determine $\lim_{x \to 0} f(x)$ e $\lim_{x \to 1} f(x)$ para:
+        $$f(x) = \begin{cases} e^x, & x \le 0 \\ \sqrt{x}, & 0 < x < 1 \\ \ln(x), & x \ge 1 \end{cases}$$
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 9: EXEMPLOS DE INEXISTÊNCIA E OSCILAÇÃO ---
+\begin{frame}{Exemplos 1.9 a 1.11: Funções Especiais e Oscilações}
+    \transfade
+    \begin{exampleblock}{Exemplo 1.9 ($\sin(1/x)$)}
+        Para $f(x) = \sin(1/x)$: (a) Onde $f(x)=0$? (b) Onde $f(x)=\pm 1$? (c) Esboce o gráfico e calcule $\lim_{x \to 0} \sin(1/x)$.
+    \end{exampleblock}
+
+    \vspace{0.2cm}\pause
+    \begin{exampleblock}{Exemplos 1.10 e 1.11 (Função Indicadora e Parte Inteira)}
+        \begin{itemize}
+            \item \textbf{Exemplo 1.10:} Para $I_{\mathbb{Q}}(x) = \begin{cases} 1, & x \in \mathbb{Q} \\ 0, & x \notin \mathbb{Q} \end{cases}$, calcule $\lim_{x \to \pi} I_{\mathbb{Q}}(x)$.
+            \vspace{0.1cm}\pause
+            \item \textbf{Exemplo 1.11:} Esboce $f(x) = \lfloor x \rfloor$ e determine $\lim_{x \to 1^+} \lfloor x \rfloor$, $\lim_{x \to 1^-} \lfloor x \rfloor$, $\lim_{x \to 1} \lfloor x \rfloor$.
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+% --- SLIDE 10: PROPRIEDADES DOS LIMITES ---
+\begin{frame}{Propriedades Operatórias dos Limites}
+    \transfade
+    \begin{block}{Teorema 1.6 (Propriedades Básicas)}
+        Se os limites $\lim_{x \to c} f(x)$ e $\lim_{x \to c} g(x)$ existem, então:
+        \begin{enumerate}[(a)]
+            \item $\lim_{x \to c} (f(x) \pm g(x)) = \lim_{x \to c} f(x) \pm \lim_{x \to c} g(x)$
+            \item $\lim_{x \to c} (f(x) \cdot g(x)) = \lim_{x \to c} f(x) \cdot \lim_{x \to c} g(x)$
+            \item $\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)}$, desde que $\lim_{x \to c} g(x) \neq 0$.
+        \end{enumerate}
+    \end{block}
+
+    \vspace{0.2cm}\pause
+    \begin{alertblock}{Corolário 1.7 (Polinômios e Racionais)}
+        Se $p(x)$ é um polinômio, então $\lim_{x \to c} p(x) = p(c)$.
+    \end{alertblock}
+\end{frame}
+
+% --- SLIDE 11: REFERÊNCIAS BIBLIOGRÁFICAS ---
+\begin{frame}{Referências Bibliográficas}
+    \transblindshorizontal
+    \begin{thebibliography}{10}
+        
+        \bibitem{cabral}
+        CABRAL, Marco; GOLDSTEIN, Paulo.
+        \newblock \emph{Curso de Cálculo de Uma Variável}.
+        \newblock 3ª ed. Rio de Janeiro: Editora Ciência Moderna, 2014.
+        \newblock \textbf{Seção 1.2: Definição de Limite (pp. 15--28)}.
+        
+        \vspace{0.4cm}
+        
+        \bibitem{stewart}
+        STEWART, James.
+        \newblock \emph{Cálculo: Volume 1}.
+        \newblock 8ª ed. São Paulo: Cengage Learning, 2016.
+        \newblock Cap. 2: Limites e Derivadas.
+
+    \end{thebibliography}
+\end{frame}
+
+\end{document}

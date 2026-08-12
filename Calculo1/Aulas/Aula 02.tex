@@ -1,0 +1,212 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+
+% Margens ajustadas
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores Institucionais IFPE
+\definecolor{primary}{RGB}{14, 114, 52}     % Verde IFPE
+\definecolor{secondary}{RGB}{10, 80, 36}    % Verde Escuro Destaque
+\definecolor{darkgrey}{RGB}{50, 50, 50}     % Cinza Escuro
+\definecolor{bglight}{RGB}{245, 247, 250}   % Cinza Claro para Caixas
+\definecolor{ifpeaccent}{RGB}{220, 38, 38}  % Vermelho Destaque/Atenção
+
+% Estilização dos Títulos de Seção
+\titleformat{\section}
+  {\color{primary}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}
+  {\color{secondary}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% Caixas Estilizadas com tcolorbox
+\tcbuselibrary{skins}
+
+\newtcolorbox{definicao}[1]{
+  colback=primary!5,
+  colframe=primary,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced
+}
+
+\newtcolorbox{exemplo}[1]{
+  colback=darkgrey!5,
+  colframe=darkgrey,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced
+}
+
+\newtcolorbox{atencao}[1]{
+  colback=ifpeaccent!5,
+  colframe=ifpeaccent,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced
+}
+
+% Configuração de Cabeçalho e Rodapé estilo Fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{primary}{Bacharelado em Engenharia Mecânica} \\
+  \textcolor{secondary}{Disciplina:} Cálculo Diferencial e Integral I \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Material de Apoio -- Seção 1.2: Definição de Limite}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias do cabeçalho e rodapé
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Título Principal do Material
+\begin{center}
+  \vspace*{-0.3cm}
+  {\LARGE\bfseries\color{primary} Material de Apoio: Definição de Limite} \\[0.2cm]
+  {\small\sffamily\color{gray} Aula 02 -- Seção 1.2 (Marco Cabral \& Paulo Goldstein, pp. 10--17)}
+  \vspace*{0.3cm}
+  \hrule height 1.5pt \color{primary}
+\end{center}
+
+\vspace{0.3cm}
+
+\section*{1. Definição Intuitiva de Limite}
+
+Ao analisarmos o comportamento de uma função real $f(x)$, frequentemente estamos interessados em entender o valor de tendência das saídas de $f(x)$ quando a variável independente $x$ se aproxima de um determinado ponto $c \in \mathbb{R}$. É fundamental destacar que esse processo analisa a vizinhança do ponto $c$, \textbf{sem importar o valor ou a existência da função exatamente no ponto $c$}.
+
+\begin{definicao}{Definição 1.1 (Limite)}
+    Seja $f$ uma função real definida em uma vizinhança de $c \in \mathbb{R}$ (não necessariamente definida no próprio ponto $c$). Dizemos que o \textbf{limite de $f(x)$ quando $x$ tende a $c$ é igual ao número real $L$}, denotado por:
+    $$\lim_{x \to c} f(x) = L \quad \text{ou} \quad f(x) \to L \text{ quando } x \to c$$
+    se os valores de $f(x)$ se aproximam arbitrariamente de $L$ à medida que $x$ se aproxima de $c$, com $x \neq c$.
+\end{definicao}
+
+\vspace{0.2cm}
+\begin{atencao}{Observação Fundamental}
+    O valor da função no ponto $f(c)$ não interfere na existência ou no valor do limite $\lim_{x \to c} f(x)$. A função pode ter um "furo" em $c$, estar definida com outro valor em $c$, ou até mesmo não pertencer ao domínio $D_f$.
+\end{atencao}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 2 ---
+\section*{2. Limites Laterais e Condição de Existência}
+
+Para analisar o comportamento de funções descontínuas ou definidas por partes, estudamos a aproximação por caminhos unilaterais: pela direita (valores maiores que $c$) e pela esquerda (valores menores que $c$).
+
+\begin{definicao}{Definição 1.2 (Limites Laterais)}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{Limite pela Direita:} Dizemos que o limite de $f(x)$ quando $x$ tende a $c$ pela direita é $L$, denotado por:
+        $$\lim_{x \to c^+} f(x) = L \quad (\text{para } x > c)$$
+        \item \textbf{Limite pela Esquerda:} Dizemos que o limite de $f(x)$ quando $x$ tende a $c$ pela esquerda é $L$, denotado por:
+        $$\lim_{x \to c^-} f(x) = L \quad (\text{para } x < c)$$
+    \end{itemize}
+\end{definicao}
+
+\vspace{0.2cm}
+
+\begin{definicao}{Lema 1.3 (Relação de Existência dos Limites Laterais)}
+    O limite bilateral $\lim_{x \to c} f(x)$ existe e é igual a $L$ \textbf{se, e somente se}, ambos os limites laterais existem e são iguais entre si:
+    $$\lim_{x \to c} f(x) = L \iff \lim_{x \to c^+} f(x) = \lim_{x \to c^-} f(x) = L$$
+\end{definicao}
+
+\vspace{0.2cm}
+\textbf{Consequência:} Se os limites unilaterais forem diferentes ($\lim_{x \to c^+} f(x) \neq \lim_{x \to c^-} f(x)$), concluímos imediatamente que $\lim_{x \to c} f(x)$ \textbf{não existe}.
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 3 ---
+\section*{3. Fenômenos de Inexistência de Limites}
+
+Nem todas as funções possuem limites finitos ao nos aproximarmos de um ponto. Na Seção 1.2 do livro-texto, destacam-se três comportamentos estruturais:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Descontinuidades por Salto (Funções por Partes e Parte Inteira):} Em funções como a parte inteira $f(x) = \lfloor x \rfloor$, os limites laterais em pontos inteiros $c \in \mathbb{Z}$ existem, porém são distintos ($\lim_{x \to c^+} \lfloor x \rfloor = c$ e $\lim_{x \to c^-} \lfloor x \rfloor = c-1$). Nesses pontos, o limite bilateral não existe.
+    \item \textbf{Oscilação Infinita na Vizinhança da Origem:} Na função $f(x) = \sin\left(\frac{1}{x}\right)$ (para $x \neq 0$), conforme $x \to 0$, a expressão $\frac{1}{x}$ cresce infinitamente, fazendo a função oscilar entre $-1$ e $1$ infinitas vezes em qualquer intervalo aberto em torno da origem. Logo, $\lim_{x \to 0} \sin\left(\frac{1}{x}\right)$ \textbf{não existe}.
+    \item \textbf{Descontinuidade Densa (Função Indicadora dos Racionais):} Seja $I_{\mathbb{Q}}(x) = \begin{cases} 1, & \text{se } x \in \mathbb{Q} \\ 0, & \text{se } x \notin \mathbb{Q} \end{cases}$. Devido à densidade dos racionais e irracionais na reta real, em qualquer vizinhança de um ponto $c$, a função oscila infinitamente entre $0$ e $1$. Assim, o limite não existe para nenhum $c \in \mathbb{R}$.
+\end{enumerate}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 4 ---
+\section*{4. Propriedades Operatórias dos Limites}
+
+As propriedades operatórias evitam a necessidade de aplicar a definição formal a cada cálculo, permitindo decompor limites complexos através de operações algébricas básicas.
+
+\begin{definicao}{Teorema 1.6 (Propriedades Operatórias dos Limites)}
+    Sejam $f$ e $g$ duas funções reais tais que os limites $\lim_{x \to c} f(x) = L_1$ e $\lim_{x \to c} g(x) = L_2$ existam ($L_1, L_2 \in \mathbb{R}$). Então:
+    \begin{enumerate}[label=\alph*)]
+        \item \textbf{Soma e Subtração:} $\lim_{x \to c} [f(x) \pm g(x)] = \lim_{x \to c} f(x) \pm \lim_{x \to c} g(x) = L_1 \pm L_2$
+        \item \textbf{Produto por Escalar:} $\lim_{x \to c} [k \cdot f(x)] = k \cdot \lim_{x \to c} f(x) = k \cdot L_1 \quad (\forall k \in \mathbb{R})$
+        \item \textbf{Produto:} $\lim_{x \to c} [f(x) \cdot g(x)] = \left(\lim_{x \to c} f(x)\right) \cdot \left(\lim_{x \to c} g(x)\right) = L_1 \cdot L_2$
+        \item \textbf{Quociente:} $\lim_{x \to c} \left[\frac{f(x)}{g(x)}\right] = \frac{\lim_{x \to c} f(x)}{\lim_{x \to c} g(x)} = \frac{L_1}{L_2}$, desde que $L_2 \neq 0$.
+        \item \textbf{Potenciação:} $\lim_{x \to c} [f(x)]^n = \left[\lim_{x \to c} f(x)\right]^n = L_1^n \quad (\forall n \in \mathbb{N})$
+    \end{enumerate}
+\end{definicao}
+
+\vspace{0.4cm}
+
+% --- SEÇÃO 5 ---
+\section*{5. Avaliação Direta em Polinômios e Funções Racionais}
+
+Como consequência direta do Teorema 1.6, obtemos a regra da substituição direta para polinômios e funções racionais no interior de seus domínios.
+
+\begin{definicao}{Corolário 1.7 (Polinômios e Funções Racionais)}
+    \begin{itemize}[leftmargin=*]
+        \item Se $p(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0$ é um polinômio, então para todo $c \in \mathbb{R}$:
+        $$\lim_{x \to c} p(x) = p(c)$$
+        \item Se $f(x) = \frac{p(x)}{q(x)}$ é uma função racional e $q(c) \neq 0$, então:
+        $$\lim_{x \to c} \frac{p(x)}{q(x)} = \frac{p(c)}{q(c)}$$
+    \end{itemize}
+\end{definicao}
+
+\vspace{0.8cm}
+\hrule
+\vspace{0.3cm}
+
+% --- REFERÊNCIAS ---
+\begin{center}
+    \small \textbf{Referências Bibliográficas} \\
+    CABRAL, M.; GOLDSTEIN, P. \textit{Curso de Cálculo de Uma Variável}. 3ª ed. Rio de Janeiro: Ciência Moderna, 2014. \\
+    STEWART, J. \textit{Cálculo: Volume 1}. 8ª ed. São Paulo: Cengage Learning, 2016.
+\end{center}
+
+\end{document}
