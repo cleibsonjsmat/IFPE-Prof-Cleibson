@@ -1,0 +1,163 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt} % Espessura da linha divisória
+\renewcommand{\columnseprulecolor}{\color{borderlight}} % Cor da linha (opcional)
+
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+\definecolor{borderlight}{RGB}{210, 220, 230}
+\definecolor{correctgreen}{RGB}{40, 140, 60}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boxfixacao}[1]{
+  enhanced,
+  colback=bglight,
+  colframe=primary,
+  arc=3pt,
+  boxrule=1pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=primary,
+  breakable
+}
+
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \small\sffamily
+  \textbf{IFPE -- Campus Caruaru}
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo 1 \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 2 -- Limites Trigonométricos}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 2: Limites Trigonométricos} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios sobre limites trigonométricos fundamentais}
+\end{center}
+
+\vspace{0.2cm}
+
+
+\section*{Lista de Fixação 3 - Limites Trigonométricos - Parte 1}
+
+\textbf{Instruções:} Resolva os exercícios abaixo, utilizando os conceitos de trigonometria e limites vistos em aula.
+
+\begin{enumerate}
+    \item \textbf{(Conceitos Básicos)} No triângulo retângulo abaixo, onde $\theta$ é um ângulo agudo, $cos(\theta) = \frac{3}{5}$ e o cateto adjacente a $\theta$ mede 6 cm.
+    \begin{itemize}
+        \item[(a)] Determine o comprimento da hipotenusa.
+        \item[(b)] Calcule $sen(\theta)$ e $tg(\theta)$.
+        \item[(c)] Usando a circunferência trigonométrica, indique em que quadrante estaria um arco de $\theta + 180^\circ$ e qual seria o sinal do seu cosseno.
+    \end{itemize}
+
+    \item \textbf{(Limite Fundamental)} Calcule o valor do limite:
+    \[
+    \lim_{x \to 0} \frac{\sin(5x)}{3x}
+    \]
+    Justifique sua resposta indicando a propriedade utilizada.
+
+    \item \textbf{(Indeterminação 0/0)} Calcule o limite abaixo, eliminando a indeterminação do tipo $\frac{0}{0}$:
+    \[
+    \lim_{x \to 0} \frac{1 - \cos(4x)}{x^2}
+    \]
+    \textbf{Dica:} Lembre-se da identidade trigonométrica $1 - \cos(2y) = 2\sin^2(y)$.
+
+    \item \textbf{(Mudança de Variável)} Utilizando uma mudança de variável adequada, calcule:
+    \[
+    \lim_{x \to 0} \frac{\tan(7x)}{\sin(3x)}
+    \]
+    Mostre todos os passos da substituição.
+
+    \item \textbf{(Limite com Composição)} Calcule o limite:
+    \[
+    \lim_{x \to 0} \frac{\sin(x^2)}{x \cdot \sin(x)}
+    \]
+    \textbf{Dica:} Reescreva a expressão para aparecerem termos no formato $\frac{\sin(u)}{u}$.
+
+\end{enumerate}
+\end{document}
