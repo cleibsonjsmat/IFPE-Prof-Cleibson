@@ -1,0 +1,209 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+
+% Margens ajustadas para cabeçalho institucional
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores (Mesma da Apostila)
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro Institucional
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro para Caixas
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda Suave
+\definecolor{correctgreen}{RGB}{40, 140, 60}  % Verde para Gabarito
+
+% Configuração das Caixas (tcolorbox)
+\tcbuselibrary{skins, breakable}
+
+% Contador de Questões
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+% Ambiente de Questão Estilizado
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt, % Linha lateral mais espessa para destaque
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+% Ambiente de Gabarito / Resolução
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+% Comando para gerar linhas de resposta/rascunho
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho com Logo e Disciplina
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Matemática VI \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 1 -- Números Complexos}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Cabeçalho de Identificação do Estudante
+\begin{tcolorbox}[colback=bglight, colframe=primary, boxrule=1pt, arc=3pt]
+  \sffamily\small
+  \begin{tabular}{@{}p{0.65\textwidth} p{0.3\textwidth}@{}}
+    \textbf{Estudante:} \hrulefill & \textbf{Data:} \hrulefill \\[0.25cm]
+    \textbf{Curso/Turma:} \hrulefill & \textbf{Nota/Visto:} \hrulefill
+  \end{tabular}
+\end{tcolorbox}
+
+% Título Principal da Lista
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 3: Números Complexos} \\[0.1cm]
+  {\small\sffamily\color{gray} Lista final para prova}
+\end{center}
+
+
+\vspace{0.2cm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=1.2em]
+
+    % Questão 1 (Original 1 - ITA)
+    \item \textbf{(ITA)} Sejam $a_n$ e $b_n$ números reais com $n = 1, 2, \dots, 6$. Os números complexos $z_n = a_n + i b_n$ são tais que $|z_n| = 2$ e $b_n \ge 0$ para todo $n = 1, 2, \dots, 6$. Se $(a_1, a_2, \dots, a_6)$ é uma progressão aritmética de razão $-1/5$ e soma $9$, então $z_3$ é igual a:
+    \begin{enumerate}[label=\alph*)]
+        \item $2i$
+        \item $8/5 + 6i/5$
+        \item $\sqrt{3} + i$
+        \item $-3\sqrt{3}/5 + \sqrt{73}i/5$
+        \item $4\sqrt{2}/5 + 2\sqrt{17}i/5$
+    \end{enumerate}
+
+    % Questão 2 (Original 3 - Unifesp)
+    \item \textbf{(Unifesp)} Considere, no plano complexo, o triângulo de vértices $z_1 = 2$, $z_2 = 5$ e $z_3 = 6 + 2i$. A área do triângulo de vértices $w_1 = i z_1$, $w_2 = i z_2$ e $w_3 = 2i z_3$ é:
+    \begin{enumerate}[label=\alph*)]
+        \item $8$
+        \item $6$
+        \item $4$
+        \item $3$
+        \item $2$
+    \end{enumerate}
+
+    % Questão 3 (Original 5 - Fuvest)
+    \item \textbf{(Fuvest)} Sabendo que $a$ é um número real e que a parte imaginária do número complexo $\frac{2+i}{a+2i}$ é zero, então $a$ é:
+    \begin{enumerate}[label=\alph*)]
+        \item $-4$
+        \item $-2$
+        \item $1$
+        \item $2$
+        \item $4$
+    \end{enumerate}
+
+    % Questão 4 (Original 8 - Unesp)
+    \item \textbf{(Unesp)} Seja $L$ o afixo do número complexo $a = 8 + i$ em um sistema de coordenadas cartesianas $xOy$. Determine o número complexo $b$, de módulo igual a $1$, cujo afixo $M$ pertence ao quarto quadrante e é tal que o ângulo $LOM$ é reto.
+
+\newpage
+
+    % Questão 5 (Original 10 - Unitau)
+    \item \textbf{(Unitau)} O módulo de $z = \frac{1}{i^{36}}$ é:
+    \begin{enumerate}[label=\alph*)]
+        \item $3$
+        \item $1$
+        \item $2$
+        \item $1/36$
+        \item $36$
+    \end{enumerate}
+
+    % Questão 6 (Original 15 - Fuvest-GV)
+    \item \textbf{(Fuvest-GV)} Dentre todos os números complexos $z = |z|(\cos\theta + i\operatorname{sen}\theta)$, $0 \le \theta < 2\pi$, que satisfazem a inequação $|z - 25i| \le 15$, determinar aquele que tem o menor argumento $\theta$.
+
+    % Questão 7 (Original 20 - Cesgranrio)
+    \item \textbf{(Cesgranrio)} No plano complexo, considere o círculo de centro na origem e raio $1$, e as imagens de cinco números complexos. O complexo $\frac{1}{z}$ é igual a:
+    \begin{enumerate}[label=\alph*)]
+        \item $z$
+        \item $w$
+        \item $r$
+        \item $s$
+        \item $t$
+    \end{enumerate}
+
+    % Questão 8 (Original 25 - UFPE)
+    \item \textbf{(UFPE)} As soluções complexas da equação $z^6 = 1$ são vértices de um polígono regular no plano complexo. Calcule o perímetro deste polígono.
+
+    % Questão 9 (Original 36 - FGV)
+    \item \textbf{(FGV)} Seja o número complexo $z = (x - 2i)^2$, no qual $x$ é um número real. Se o argumento principal de $z$ é $90^\circ$, então $\frac{1}{z}$ é igual a:
+    \begin{enumerate}[label=\alph*)]
+        \item $-i/8$
+        \item $-8i$
+        \item $4i$
+        \item $-1 + 4i$
+        \item $4 - i$
+    \end{enumerate}
+
+    % Questão 10 (Original 49 - Unicamp)
+    \item \textbf{(Unicamp)} Um triângulo equilátero, inscrito em uma circunferência de centro na origem, tem como um de seus vértices o ponto do plano associado ao número complexo $\sqrt{3} + i$.
+    \begin{enumerate}[label=\alph*)]
+        \item Que números complexos estão associados aos outros dois vértices do mesmo triângulo? Faça a figura desse triângulo.
+        \item Qual a medida do lado desse triângulo?
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}
