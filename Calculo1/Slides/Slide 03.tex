@@ -1,0 +1,281 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+
+% Paleta de Cores Institucional
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+
+\usetheme{Boadilla}
+\usecolortheme{default}
+
+\setbeamercolor{structure}{fg=primary}
+\setbeamercolor{palette primary}{bg=primary, fg=white}
+\setbeamercolor{palette secondary}{bg=secondary, fg=white}
+\setbeamercolor{palette tertiary}{bg=primary!80, fg=white}
+\setbeamercolor{titlelike}{bg=primary, fg=white}
+\setbeamercolor{frametitle}{bg=primary, fg=white}
+\setbeamercolor{block title}{bg=secondary, fg=white}
+\setbeamercolor{block body}{bg=bglight, fg=black}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Prof. Cleibson José da Silva
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}Cálculo I -- IFPE
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\title[Definição de Derivada]{Capítulo 3: Derivada\\ \Large 3.1 Definição de Derivada}
+\author[Prof. Cleibson]{Prof. Cleibson José da Silva}
+\institute[IFPE]{Instituto Federal de Pernambuco -- Campus Caruaru}
+\date{}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Pré-Cálculo: Reta e Coeficiente Angular}
+  \begin{block}{Revisão da Equação da Reta}
+    \begin{itemize}
+      \item Forma inclinada-intercepto: $y = mx + b$
+      \item Forma ponto-inclinação: $y - y_0 = m(x - x_0)$
+    \end{itemize}
+  \end{block}
+
+  \begin{alertblock}{Significado Geométrico de $m$, $x_0$ e $y_0$}
+    \begin{itemize}
+      \item $m = \tan \theta$ é o \textbf{coeficiente angular} ($\theta$ é o ângulo formado com o eixo $x$).
+      \item $m > 0 \implies$ função crescente.
+      \item $m < 0 \implies$ função decrescente.
+      \item $m = 0 \implies$ função constante.
+      \item $(x_0, y_0)$ é o ponto por onde a reta passa.
+    \end{itemize}
+  \end{alertblock}
+  \textit{Conclusão:} Sabendo o coeficiente angular $m$ e um ponto $(x_0, y_0)$, determina-se a equação da reta.
+\end{frame}
+
+\begin{frame}{Definição Formal de Derivada}
+  \begin{block}{Definição 3.1}
+    Dada uma função $f$ definida próxima de um ponto $a$, definimos a sua derivada em $a$ por:
+    \[
+      f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}
+    \]
+    Dizemos que $f$ é \textbf{derivável} ou \textbf{diferenciável} em $a$.
+  \end{block}
+
+  \begin{exampleblock}{Lema 3.2 (Forma Alternativa)}
+    Mudando a variável para $x = a + h$:
+    \[
+      f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}
+    \]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Interpretação da Derivada: As Três Visões}
+  Se $y = f(x)$, vemos este limite como uma taxa de variação:
+  \[
+    f'(a) = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+  \]
+  
+  \begin{table}
+    \centering
+    \begin{tabular}{l l l}
+      \toprule
+      \textbf{Área} & \textbf{Taxa Média: } $\frac{f(x)-f(a)}{x-a}$ & \textbf{Taxa Instantânea: } $f'(a)$ \\
+      \midrule
+      \textbf{Matemática} & Taxa média de variação de $f$ & Taxa instantânea \\
+      \textbf{Física} & Velocidade média & Velocidade instantânea \\
+      \textbf{Geometria} & Coef. angular da reta secante & Coef. angular da reta tangente \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Visão Analítica: Derivadas Básicas}
+  \begin{block}{Lema 3.3}
+    A derivada de $f(x) = C$ é zero e a derivada de $f(x) = x$ é $1$.
+  \end{block}
+
+  \vspace{0.3cm}
+  \textbf{Demonstração:}
+  \begin{itemize}
+    \item Se $f(x) = C$:
+      \[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} = \dots \]
+    \item Se $f(x) = x$:
+      \[ f'(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h} = \dots \]
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo 3.1: Potências $x^2$ e $x^3$}
+  Calcule pela definição a derivada de:
+  
+  \vspace{0.3cm}
+  \begin{enumerate}[(a)]
+    \item $f(x) = x^2$
+    \vspace{2cm}
+    \item $g(x) = x^3$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Exemplo 3.2: $f(x) = 1/x$ e $g(x) = \sqrt{x}$}
+  Calcule pela definição a derivada de:
+  
+  \vspace{0.3cm}
+  \begin{enumerate}[(a)]
+    \item $f(x) = \frac{1}{x}$
+    \vspace{2cm}
+    \item $g(x) = \sqrt{x}$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Exemplo 3.3: Não Existência de Derivada}
+  Calcule pela definição $f'(0)$ e $g'(0)$ se:
+  
+  \vspace{0.3cm}
+  \begin{enumerate}[(a)]
+    \item $f(x) = |x|$
+    \vspace{2cm}
+    \item $g(x) = \sqrt[3]{x}$
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Observações Geométricas: "Bicos" e Tangentes Verticais}
+  \begin{columns}
+    \column{0.5\linewidth}
+      \begin{block}{Observação 3.2 ($y = |x|$)}
+        Possui um "bico" em $x=0$, o que impede a existência de uma tangente bem definida. Dizemos que funções deriváveis são \textbf{suaves}.
+      \end{block}
+    \column{0.5\linewidth}
+      \begin{block}{Observação 3.3 ($y = \sqrt[3]{x}$)}
+        O coeficiente angular da reta tangente converge para $\infty$ quando $x \to 0$. A reta tangente no zero coincide com o eixo $y$.
+      \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Exemplo 3.4: Função de Dirichlet Modificada}
+  Considere 
+  \[
+    f(x) = \begin{cases} x^2, & x \in \mathbb{Q} \\ 0, & x \notin \mathbb{Q} \end{cases}
+  \]
+  Calcule $f'(0)$.
+\end{frame}
+
+\begin{frame}{Visões Física e Geométrica}
+  \begin{block}{Visão Física}
+    Se $S(t)$ é a posição de um objeto no tempo $t$, $S'(t)$ representa a sua \textbf{velocidade instantânea}.
+  \end{block}
+
+  \begin{exampleblock}{Exemplo 3.5}
+    A posição $S$ em metros de um barco em função do tempo $t$ em segundos é dada por $S(t) = \sqrt{t}$ para $t > 0$. Determine sua velocidade em m/s no instante $t = 9$.
+  \end{exampleblock}
+
+  \begin{block}{Visão Geométrica}
+    Reta tangente no ponto $(a, f(a))$ é:
+    \begin{itemize}
+      \item Horizontal se $f'(a) = 0$;
+      \item Crescente se $f'(a) > 0$;
+      \item Decrescente se $f'(a) < 0$.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Exemplos 3.6 e 3.7: Análise Gráfica da Derivada}
+  \begin{exampleblock}{Exemplo 3.6}
+    Considere o gráfico de $y = g(x)$. Determine se é zero, positivo ou negativo:
+    \begin{enumerate}[(a)]
+      \item $g'(2)$
+      \item $g'(5)$
+      \item $g'(6)$
+      \item $g'(8)$
+    \end{enumerate}
+  \end{exampleblock}
+
+  \begin{exampleblock}{Exemplo 3.7}
+    Ainda utilizando o gráfico do exemplo anterior, esboce o gráfico de $y = g'(x)$. Comece pelos pontos onde a derivada é zero.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Outras Notações para Derivada}
+  \begin{block}{Notações Históricas}
+    \begin{itemize}
+      \item \textbf{Newton:} $\dot{y}$ (ponto por cima do $y$).
+      \item \textbf{Leibniz:} $\frac{df}{dx} = \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}$ (sugestiva de taxa de variação instantânea).
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Outros Operadores Diferenciais}
+    Dado $y = f(x)$:
+    \[ f' = \frac{df}{dx} = y' = \frac{dy}{dx} = \frac{d}{dx}f = Df = D_x f \]
+  \end{block}
+
+  \begin{block}{Derivadas de Ordem Superior}
+    \begin{itemize}
+      \item Segunda derivada: $f'' = (f')' = \frac{d^2 f}{dx^2} = D^2 f$
+      \item Ordem $n$: $f^{(n)} = \frac{d^n f}{dx^n} = D^n f$
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Equação da Reta Tangente}
+  Como o coeficiente angular da reta tangente ao gráfico de $y = f(x)$ no ponto $(x_0, f(x_0))$ é $m = f'(x_0)$, a equação da reta tangente é:
+  \[ y - f(x_0) = f'(x_0)(x - x_0) \]
+
+  \begin{exampleblock}{Exemplo 3.8}
+    Determine a equação da reta tangente ao gráfico de:
+    \begin{enumerate}[(a)]
+      \item $y = x^2$ no ponto $(4, 16)$
+      \vspace{0.8cm}
+      \item $y = \sqrt{x}$ no ponto onde $x = 9$
+    \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Exemplo 3.9: Tangentes Passando por Ponto Externo}
+  \begin{exampleblock}{Exemplo 3.9}
+    Determine a equação da reta tangente ao gráfico de $y = x^3$ no ponto onde $x = a$. Determine todas as tangentes que passam pelo ponto $(0, 16)$.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Erros Comuns ao Calcular a Reta Tangente}
+  \begin{alertblock}{Erro Comum 1: Confundir Derivada com a Reta Tangente}
+    \textbf{Exemplo:} Determine a reta tangente ao gráfico de $y = x^2$ no ponto $(2, 4)$.\\
+    Responder $y = 2x$ está \textbf{errado}.
+  \end{alertblock}
+
+  \begin{alertblock}{Erro Comum 2: Não Avaliar o Coeficiente Angular no Ponto de Tangência}
+    \textbf{Exemplo:} Determine a reta tangente ao gráfico de $f(x) = x^3$ no ponto $(1, 1)$.\\
+    Responder $y - 1 = 3x^2(x - 1)$ está \textbf{errado} (nem sequer é uma reta).
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Derivada e Continuidade}
+  \begin{block}{Lema 3.4 (Derivada e Continuidade)}
+    Se $f'(a)$ existe, então $f$ é contínua em $a$.
+  \end{block}
+
+  \vspace{0.4cm}
+  \textbf{Demonstração:}
+  \[
+    \lim_{x \to a} [f(x) - f(a)] = \lim_{x \to a} \left[ \frac{f(x) - f(a)}{x - a} \cdot (x - a) \right] = \dots
+  \]
+\end{frame}
+
+\end{document}

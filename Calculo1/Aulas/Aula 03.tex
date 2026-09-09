@@ -1,0 +1,191 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{booktabs}
+
+% Margens ajustadas
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores Institucionais IFPE
+\definecolor{primary}{RGB}{14, 114, 52}     % Verde IFPE
+\definecolor{secondary}{RGB}{10, 80, 36}    % Verde Escuro Destaque
+\definecolor{darkgrey}{RGB}{50, 50, 50}     % Cinza Escuro
+\definecolor{bglight}{RGB}{245, 247, 250}   % Cinza Claro para Caixas
+\definecolor{ifpeaccent}{RGB}{220, 38, 38}  % Vermelho Destaque/Atenção
+
+% Estilização dos Títulos de Seção
+\titleformat{\section}
+  {\color{primary}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}
+  {\color{secondary}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% Caixas Estilizadas com tcolorbox
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{definicao}[1]{
+  colback=primary!5,
+  colframe=primary,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced,
+  breakable
+}
+
+\newtcolorbox{exemplo}[1]{
+  colback=darkgrey!5,
+  colframe=darkgrey,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced,
+  breakable
+}
+
+\newtcolorbox{atencao}[1]{
+  colback=ifpeaccent!5,
+  colframe=ifpeaccent,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2mm,
+  boxrule=0.8pt,
+  enhanced,
+  breakable
+}
+
+% Configuração de Cabeçalho e Rodapé estilo Fancyhdr
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo Diferencial e Integral I \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Material de Apoio -- Seção 3.1: Definição de Derivada}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias do cabeçalho e rodapé
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Título Principal do Material
+\begin{center}
+  \vspace*{-0.3cm}
+  {\LARGE\bfseries\color{primary} Material de Apoio: Definição de Derivada} \\[0.2cm]
+  {\small\sffamily\color{gray} Seção 3.1 -- Definição, Interpretações e Derivadas Básicas}
+  \vspace*{0.3cm}
+  {\color{primary}\hrule height 1.5pt}
+\end{center}
+
+\vspace{0.3cm}
+
+\section*{1. Pré-Cálculo: Revisão de Retas}
+A equação da reta no plano cartesiano possui as formas:
+\begin{itemize}
+  \item \textbf{Forma reduzida:} $y = mx + b$
+  \item \textbf{Forma ponto-inclinação:} $y - y_0 = m(x - x_0)$
+\end{itemize}
+O parâmetro $m$ é o \textbf{coeficiente angular} ($m = \tan \theta$). Se $m > 0$, a função é crescente; se $m < 0$, decrescente; e se $m = 0$, constante. O ponto $(x_0, y_0)$ representa a localização da reta no plano.
+
+\section*{2. Definição Formal de Derivada}
+\begin{definicao}{Definição 3.1 e Lema 3.2}
+Dada uma função $f$ definida próxima de um ponto $a$, a derivada de $f$ em $a$ é o limite:
+\[
+  f'(a) = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h} \quad \text{ou, equivalentemente,} \quad f'(a) = \lim_{x \to a} \frac{f(x) - f(a)}{x - a}
+\]
+\end{definicao}
+
+\section*{3. Interpretações da Derivada}
+Como limite da taxa de variação $\frac{\Delta y}{\Delta x}$, temos as seguintes interpretações:
+\begin{table}[h!]
+  \centering
+  \begin{tabular}{l p{6cm} p{6cm}}
+    \toprule
+    \textbf{Visão} & \textbf{Taxa Média} $\frac{f(x)-f(a)}{x-a}$ & \textbf{Taxa Instantânea} $f'(a)$ \\
+    \midrule
+    \textbf{Matemática} & Taxa média de variação de $f$ & Taxa instantânea de variação \\
+    \textbf{Física} & Velocidade média & Velocidade instantânea \\
+    \textbf{Geometria} & Coeficiente angular da reta secante & Coeficiente angular da reta tangente \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section*{4. Derivadas Fundamentais pela Definição}
+\begin{itemize}
+  \item \textbf{Função Constante e Identidade:} Se $f(x) = C \implies f'(x) = 0$. Se $f(x) = x \implies f'(x) = 1$.
+  \newpage 
+
+  \item \textbf{Potências Inteiras e Raízes:}
+    \begin{itemize}
+      \item $f(x) = x^2 \implies f'(x) = 2x$
+      \item $g(x) = x^3 \implies g'(x) = 3x^2$
+      \item $f(x) = \frac{1}{x} \implies f'(x) = -\frac{1}{x^2}$
+      \item $g(x) = \sqrt{x} \implies g'(x) = \frac{1}{2\sqrt{x}}$
+    \end{itemize}
+\end{itemize}
+
+\section*{5. Casos de Não Existência de Derivada}
+\begin{itemize}
+  \item \textbf{Bicos ($f(x) = |x|$ em $x=0$):} $\lim_{h \to 0} \frac{|h|}{h}$ não existe pois os limites laterais são $-1$ e $1$.
+  \item \textbf{Tangentes Verticais ($g(x) = \sqrt[3]{x}$ em $x=0$):} $\lim_{h \to 0} \frac{1}{\sqrt[3]{h^2}} = \infty$. O limite não é finito.
+\end{itemize}
+\textit{Nota:} Funções que possuem derivada em um ponto são chamadas de \textbf{suaves} (sem bicos).
+
+\section*{6. Derivada e Continuidade}
+\begin{definicao}{Lema 3.4}
+Se $f'(a)$ existe (ou seja, $f$ é derivável em $a$), então $f$ é contínua em $a$.
+\end{definicao}
+
+\section*{7. Equação da Reta Tangente e Erros Comuns}
+A reta tangente ao gráfico de $y = f(x)$ no ponto $(x_0, f(x_0))$ é dada por:
+\[ y - f(x_0) = f'(x_0)(x - x_0) \]
+
+\begin{atencao}{Atenção com Erros Frequentes!}
+  \begin{itemize}
+    \item \textbf{Erro 1:} Confundir a função derivada com a reta tangente. A derivada fornece apenas o \textit{coeficiente angular} $m = f'(x_0)$ no ponto específico.
+    \item \textbf{Erro 2:} Não avaliar a derivada no ponto de tangência (manter $x$ variável na inclinação).
+  \end{itemize}
+\end{atencao}
+
+% --- REFERÊNCIAS ---
+\begin{center}
+    \small \textbf{Referências Bibliográficas} \\
+    CABRAL, M.; GOLDSTEIN, P. \textit{Curso de Cálculo de Uma Variável}. 3ª ed. Rio de Janeiro: Ciência Moderna, 2014. \\
+    STEWART, J. \textit{Cálculo: Volume 1}. 8ª ed. São Paulo: Cengage Learning, 2016.
+\end{center}
+
+\end{document}
