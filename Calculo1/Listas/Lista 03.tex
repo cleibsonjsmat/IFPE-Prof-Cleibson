@@ -1,0 +1,160 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt} % Espessura da linha divisória
+\renewcommand{\columnseprulecolor}{\color{borderlight}} % Cor da linha (opcional)
+
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+\definecolor{borderlight}{RGB}{210, 220, 230}
+\definecolor{correctgreen}{RGB}{40, 140, 60}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boxfixacao}[1]{
+  enhanced,
+  colback=bglight,
+  colframe=primary,
+  arc=3pt,
+  boxrule=1pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=primary,
+  breakable
+}
+
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \small\sffamily
+  \textbf{IFPE -- Campus Caruaru}
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo 1 \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 2 -- Limites Trigonométricos}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 3: Definição de Derivada} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios sobre definição de Derivada}
+\end{center}
+
+\vspace{0.2cm}
+
+
+\section*{Lista 03 - Definição de Derivada}
+
+
+
+\textbf{Use a definição:} \( f'(x) = \lim\limits_{h \to 0} \dfrac{f(x+h) - f(x)}{h} \) para resolver os problemas de 1 a 4.\\[0.5cm]
+
+\begin{enumerate}
+    \item  Dada \( f(x) = 4x - 3 \), encontre \( f'(2) \) usando a definição.
+    
+    \item  Dada \( f(x) = x^2 + 1 \), encontre \( f'(1) \) usando a definição.
+    
+    \item  Dada \( f(x) = \dfrac{1}{x} \), encontre \( f'(2) \) usando a definição.
+    
+    \item  Dada \( f(x) = 3x + 5 \), use a definição para encontrar a função derivada \( f'(x) \).
+    \item  Um objeto se move segundo a função posição \( s(t) = t^2 + 3t \) (\( s \) em metros, \( t \) em segundos).
+    
+    \begin{enumerate}
+        \item Qual sua velocidade média entre \( t = 1 \) e \( t = 4 \)?
+        \item Encontre a velocidade instantânea em \( t = 2 \) s usando a definição de derivada.
+    \end{enumerate}
+
+    \item Uma população de bactérias é dada por \( P(t) = 200 + 30t \) (\( t \) em horas).
+    Calcule a taxa de crescimento instantânea para qualquer tempo \( t \) usando a definição de derivada.
+
+    \item Para \( f(x) = x^3 - 2x \):
+    \begin{enumerate}
+        \item Encontre \( f'(x) \)
+        \item Calcule \( f'(1) \) usando o resultado do item (a)
+        \item Escreva a equação da reta tangente ao gráfico de \( f \) no ponto onde \( x = 1 \)
+    \end{enumerate}
+
+  \end{enumerate}
+
+  
+\end{document}
