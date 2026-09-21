@@ -1,0 +1,203 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox} % Necessário para \ifstrempty no ambiente questao
+
+% Margens ajustadas para cabeçalho institucional
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores Institucionais
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda
+\definecolor{correctgreen}{RGB}{40, 140, 60}  % Verde Gabarito
+
+% Configuração das Caixas (tcolorbox)
+\tcbuselibrary{skins, breakable}
+
+% Contador de Questões
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+% Ambiente de Questão Estilizado
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+% Ambiente de Gabarito / Resolução
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{\vspace{#1}}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \IfFileExists{Imagens/logocaruaru.png}{%
+    \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+  }{%
+    \small\sffamily\textbf{IFPE -- Campus Caruaru}%
+  }%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Matemática VI \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista de Revisão -- Números Complexos}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Cabeçalho de Identificação
+\begin{tcolorbox}[colback=bglight, colframe=primary, boxrule=1pt, arc=3pt]
+  \sffamily\small
+  \begin{tabular}{@{}p{0.65\textwidth} p{0.3\textwidth}@{}}
+    \textbf{Estudante:} \hrulefill & \textbf{Data:} \hrulefill \\[0.25cm]
+    \textbf{Curso/Turma:} \hrulefill & \textbf{Nota/Visto:} \hrulefill
+  \end{tabular}
+\end{tcolorbox}
+
+% Título Principal
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista de Revisão: Números Complexos} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios de Fixação -- Matemática VI}
+\end{center}
+
+\vspace{0.2cm}
+
+
+
+\begin{enumerate}
+    \item Determine o valor real de $x$ para que o número complexo $z = (x^2 - 9) + (x - 3)i$ seja um número real puro.
+
+    \item Sabendo que $x \in \mathbb{R}$, encontre os valores de $x$ de modo que $z = 3 + (x^2 - 5x + 6)i$ seja um número imaginário puro.
+
+    \item Determine os valores de $m \in \mathbb{R}$ para os quais o número complexo $z = (m^2 - 16) + (m + 4)i$ seja nulo.
+
+    \item Dados $z_1 = 3 + 2xi$ e $z_2 = (x - 1) - 4i$, determine $x \in \mathbb{R}$ de modo que $z_1 + z_2$ seja um número real puro.
+
+    \item Calcule os valores reais de $a$ para os quais o número complexo $z = (2 + a \cdot i)^2$ seja imaginário puro.
+
+    \item Escreva o número complexo $z = \frac{3 + i}{2 - i}$ na forma algébrica $a + bi$.
+
+    \item Determine a parte real e a parte imaginária de $z = \frac{(2 + 3i)(1 - i)}{1 + 2i}$.
+
+    \item Determine o valor de $k \in \mathbb{R}$ para que o número complexo $z = \frac{2 + ki}{1 - i}$ seja um número real.
+\end{enumerate}
+
+
+\begin{enumerate}\setcounter{enumi}{8}
+    \item Sendo $z = a + bi$ ($a, b \in \mathbb{R}$), determine $z$ tal que $z \cdot \bar{z} - 4\bar{z} = 5 + 12i$.
+
+    \item Calcule o módulo do número complexo $z = \frac{(1 + i)^4}{(1 - i)^2}$.
+
+    \item Se $z = 3 - 4i$, determine o módulo de $z^3$.
+
+    \item Resolva a equação complexa $2z + 3\bar{z} = 10 + 2i$, determinando $z \in \mathbb{C}$.
+
+    \item Calcule o módulo de $z = \frac{(3 + 4i)(1 + i)}{\sqrt{3} - i}$.
+
+    \item Determine todos os números complexos $z = a + bi$ que satisfazem a igualdade $z^2 = \bar{z}$.
+
+    \item Sabendo que $z \cdot \bar{z} = 25$ e que a parte real de $z$ é igual a $3$, determine as possíveis partes imaginárias de $z$.
+\end{enumerate}
+
+
+\begin{enumerate}\setcounter{enumi}{15}
+    \item Calcule o valor exato da soma $S = i^0 + i^1 + i^2 + i^3 + \dots + i^{2026}$.
+
+    \item Calcule o valor da expressão $E = \frac{i^{105} + i^{210}}{i^{315} - i^{420}}$.
+
+    \item Sabendo que $i$ é a unidade imaginária, determine o valor de $(1 + i)^{10}$.
+
+    \item Simplifique a expressão $z = i + i^2 + i^3 + \dots + i^{99} + \frac{1}{i}$.
+
+    \item Determine o valor do inteiro positivo $n$ de modo que $(1 - i)^{2n} = -64$.
+\end{enumerate}
+
+
+\begin{enumerate}\setcounter{enumi}{20}
+    \item Escreva o número complexo $z = -1 + i\sqrt{3}$ na forma trigonométrica (ou polar).
+
+    \item Dado $z = 2 \left( \cos \frac{\pi}{6} + i \sin \frac{\pi}{6} \right)$, determine a forma algébrica do conjugado de $z^2$.
+
+    \item Calcule o valor exato de $(1 - i\sqrt{3})^6$.
+
+    \item Se $z_1 = 4 \left( \cos \frac{5\pi}{12} + i \sin \frac{5\pi}{12} \right)$ e $z_2 = 2 \left( \cos \frac{\pi}{12} + i \sin \frac{\pi}{12} \right)$, determine a forma algébrica do quociente $\frac{z_1}{z_2}$.
+
+    \item Calcule o valor de $(\sqrt{2} + i\sqrt{2})^8$.
+
+    \item Sendo $z = 2 \left( \cos \frac{\pi}{3} + i \sin \frac{\pi}{3} \right)$, determine a forma trigonométrica de $\frac{1}{z}$.
+\end{enumerate}
+
+
+\begin{enumerate}\setcounter{enumi}{26}
+    \item Considere no plano complexo um triângulo equilátero inscrito em uma circunferência centrada na origem, tendo como um dos vértices o afixo do número $z = 2 + 2\sqrt{3}i$. Determine a área desse triângulo.
+
+    \item Os afixos das raízes da equação $z^4 = 16$ formam os vértices de um polígono no plano de Argand-Gauss. Determine o perímetro e a área desse polígono.
+
+    \item Considere no plano complexo o polígono regular cujos vértices são as soluções da equação $z^8 = 1$. Determine a área exata desse polígono.
+
+    \item Um hexágono regular está inscrito em uma circunferência centrada na origem do plano de Argand-Gauss. Sabendo que um de seus vértices é o ponto correspondente ao número complexo $z = 3i$, determine os demais números complexos associados aos vértices desse hexágono.
+\end{enumerate}
+
+\end{document}
