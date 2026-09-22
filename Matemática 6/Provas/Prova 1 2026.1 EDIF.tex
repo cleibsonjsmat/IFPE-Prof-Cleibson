@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[lmargin=2cm,rmargin=2cm,tmargin=1.5cm,bmargin=2cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[brazil]{babel}
+\usepackage{enumerate}
+\usepackage{tikz,tkz-fct}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{multicol,anyfontsize}
+\everymath{\displaystyle}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{enumerate}
+
+\newcommand{\opt}[5]{\begin{multicols}{3}\begin{enumerate}[(a)]
+    \item #1
+    \item #2
+    \item #3
+    \item #4
+    \item #5
+   
+\end{enumerate}\end{multicols} }
+
+\newcounter{questao}
+\setcounter{questao}{1}
+\newcommand{\quest}[1]{\vspace{.5cm}\noindent\textbf{Questão \thequestao. [{\small Valor: #1} ]\stepcounter{questao}}}
+
+
+\begin{document}
+
+\begin{table}[h]
+
+ \begin{tabular}{r c}
+    \multirow{4}*{\includegraphics[scale=.8]{Imagens/logocaruaru.png}}
+  & INSTITUTO FEDERAL DE PERNAMBUCO - CAMPUS CARUARU\\
+  & Curso Técnico em Edificações\\
+  & Matemática VI\\
+  & Professor: Cleibson José da Silva\\
+  & Data: 18  de setembro de 2026 \\
+ \end{tabular}
+\end{table}
+%\vspace{1.5cm}
+%\textbf{Nome:}\hspace{0.3cm}\hrulefill \hrulefill
+%\hrulefill \hspace{0.1cm} 
+%\textbf{NOTA:}\hspace{0.1cm}\rule{1.5cm}{.1mm}
+%\vspace{0.5cm}
+
+\begin{center}
+    \textbf{\underline{Avaliação da primeira unidade}}
+\end{center}
+%\textbf{Todas as questões só serão corrigidas com a apresentação dos seus respectivos cálculos completos e corretos.}
+\bigskip 
+{\bf Esta prova é composta por cinco questões num total de oitos pontos. Todas as questões a seguir só serão corrigidas com seus respctivos cálculos corretos e completos.}
+
+
+
+\quest{2,0}  Calcule o módulo de $\frac{(1+i)^3}{1-i}$.
+
+\quest{2,0}  Sabendo que $z=a+bi$, onde $a,b\in \mathbb{R}$, calcule $a$ e $b$ tais que $z\cdot\overline{z}-6\overline{z}=7+24i$.
+
+
+\quest{2,0}  Calcule o valor de $(1-i\sqrt{3})^6.$
+
+\quest{2,0}  Calcule os valores reais de $\alpha$ para que $(1+\alpha\cdot i)^2$ seja imaginário puro.
+
+
+%\question[1] Nos itens a seguir, assinale cada afirmação com V para verdadeiro ou F para falso.
+
+%\begin{enumerate}[a)]
+%    \item  (\hspace{0.5cm}) Se o número complexo $z$ for multiplicado por $i^3$, o efeito geométrico é de uma rotação de $\frac{3\pi}{2}$rad a partir da posição de $z$.
+ %   \item (\hspace{0.5cm}) Considere o número complexo $z=1+\sqrt{3}i$, sebe-se que o ângulo do vetor $\overrightarrow{OP}$, em que $P=(Re(z),Im(z)),$ é $\frac{\pi}{3}$rad. Neste caso, o ângulo do vetor correspondente a $z^3$ é $\pi$rad.
+ %   \item (\hspace{0.5cm}) De acordo o item anterior, se $z=1+\sqrt{3}i$, então $z^3=8i$.
+%\end{enumerate}
+
+\quest{2,0}  Um triângulo equilátero, inscrito em uma circunferência de centro na origem,
+tem como um de seus vértices o ponto do plano associado ao número complexo $z=\sqrt{3}+i$. Assinale a alternativa que seja numericamente igual a área desse triângulo.
+
+\begin{enumerate}[a)]
+    \item $\sqrt{3}$
+    \item $2\sqrt{3}$
+    \item $3\sqrt{3}$
+    \item $4\sqrt{3}$
+    \item $5\sqrt{3}$
+\end{enumerate}
+\end{document}

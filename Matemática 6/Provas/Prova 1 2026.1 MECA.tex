@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[lmargin=2cm,rmargin=2cm,tmargin=1.5cm,bmargin=2cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage[brazil]{babel}
+\usepackage{enumerate}
+\usepackage{tikz,tkz-fct}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{float}
+\usepackage{multicol,anyfontsize}
+\everymath{\displaystyle}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{enumerate}
+
+\newcommand{\opt}[5]{\begin{multicols}{3}\begin{enumerate}[(a)]
+    \item #1
+    \item #2
+    \item #3
+    \item #4
+    \item #5
+   
+\end{enumerate}\end{multicols} }
+
+\newcounter{questao}
+\setcounter{questao}{1}
+\newcommand{\quest}[1]{\vspace{.5cm}\noindent\textbf{Questão \thequestao. [{\small Valor: #1} ]\stepcounter{questao}}}
+
+
+\begin{document}
+
+\begin{table}[h]
+
+ \begin{tabular}{r c}
+    \multirow{4}*{\includegraphics[scale=.8]{Imagens/logocaruaru.png}}
+  & INSTITUTO FEDERAL DE PERNAMBUCO - CAMPUS CARUARU\\
+  & Curso Técnico em Mecatrônica\\
+  & Matemática VI\\
+  & Professor: Cleibson José da Silva\\
+  & Data: 17  de setembro de 2026 \\
+ \end{tabular}
+\end{table}
+%\vspace{1.5cm}
+%\textbf{Nome:}\hspace{0.3cm}\hrulefill \hrulefill
+%\hrulefill \hspace{0.1cm} 
+%\textbf{NOTA:}\hspace{0.1cm}\rule{1.5cm}{.1mm}
+%\vspace{0.5cm}
+
+\begin{center}
+    \textbf{\underline{Avaliação da primeira unidade}}
+\end{center}
+%\textbf{Todas as questões só serão corrigidas com a apresentação dos seus respectivos cálculos completos e corretos.}
+\bigskip 
+{\bf Esta prova é composta por quatro questões num total de oitos pontos. Todas as questões a seguir só serão corrigidas com seus respctivos cálculos corretos e completos.}
+
+
+
+\quest{2,0} Determine os valores de x, de modo que
+o número complexo $$z=2+(x-4i)\cdot (2+xi)$$ seja real puro.
+
+\quest{2,0} Se $z = 2 \left[ \cos\left(\frac{\pi}{4}\right) + i \, \sin\left(\frac{\pi}{4}\right) \right],$ então o conjugado de $z^2$ é igual a
+
+\opt{$\sqrt{2} - i\sqrt{2}$}{$-\sqrt{2} - i\sqrt{2}$}{$-\sqrt{2} + i\sqrt{2}$}{$4$}{$-4i$}
+
+
+\quest{2,0} Considere o número complexo $z = i$, onde $i$ é a unidade imaginária.   O valor de $z^4 + z^3 + z^2 + z + \frac{1}{z}$
+é
+
+\begin{enumerate}
+    \item[(a)] $-1$
+    \item[(b)] $0$
+    \item[(c)] $1$
+    \item[(d)] $i$
+    \item[(e)] $-i$
+\end{enumerate}
+
+\quest{2,0} Considere, no plano complexo, um polígono regular cujos vértices são as soluções da equação $z^6 = 1$. A área deste polígono, em unidades de área, é igual a:
+
+\begin{enumerate}[a)]
+    \item $\sqrt{3}$
+    \item $5$
+    \item $\pi$
+    \item $\frac{3\sqrt{3}}{2}$
+    \item $2\pi$
+\end{enumerate}
+\end{document}
