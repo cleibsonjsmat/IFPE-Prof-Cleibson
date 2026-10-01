@@ -1,0 +1,225 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+
+% Margens ajustadas
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores Profissional
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro Institucional
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro para Caixas
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda Suave
+
+% Estilização dos Títulos de Seção
+\titleformat{\section}
+  {\color{primary}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}
+  {\color{secondary}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% Caixas Estilizadas com tcolorbox
+\tcbuselibrary{skins, breakable}
+
+% Caixa para Teoremas
+\newtcolorbox{teoremabox}[1][]{
+  colback=bglight,
+  colframe=primary,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=3pt,
+  boxrule=1pt,
+  enhanced,
+  drop shadow=black!10
+}
+
+% Caixa para Exemplos
+\newtcolorbox{exemplobox}[1][]{
+  colback=white,
+  colframe=secondary,
+  fonttitle=\bfseries\color{white},
+  title={#1},
+  arc=2pt,
+  boxrule=0.8pt,
+  breakable
+}
+
+% Caixa de Destaque / Exemplo (Corrigida e adicionada para o documento)
+\newtcolorbox{destaquebox}[1][]{
+  colback=bglight,
+  colframe=secondary,
+  sharp corners,
+  boxrule=0.8pt,
+  top=3mm,
+  bottom=3mm,
+  left=4mm,
+  right=4mm,
+  breakable,
+  #1
+}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho
+\fancyhead[L]{%
+  % Certifique-se de que a imagem existe na pasta indicada ou altere o caminho
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Matemática VI \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Material Didático -- Polinômios}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias do cabeçalho e rodapé
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Título Principal do Material
+\begin{center}
+  \vspace*{-0.3cm}
+  {\LARGE\bfseries\color{primary} Expressões Algébricas e Polinômios} \\[0.2cm]
+  {\small\sffamily\color{gray} Classificação, Monômios, Operações e Divisão Algébrica}
+  \vspace*{0.3cm}
+  \hrule height 1.5pt \color{primary}
+\end{center}
+
+\vspace{0.3cm}
+
+\section{Expressões Algébricas e Monômios}
+
+Em diversas situações no estudo da Matemática e das Engenharias, é conveniente denotar números reais arbitrários por meio de letras (variáveis), possibilitando manipular algebricamente quantidades mesmo antes de conhecer seus valores numéricos exatos.
+
+Define-se como \textbf{expressão algébrica} todo resultado de um número finito de operações fundamentais (adição, subtração, multiplicação, divisão, potenciação e radiciação) efetuadas sobre variáveis e números reais, desde que tais operações sejam bem definidas em $\mathbb{R}$.
+
+\subsection{Classificação das Expressões Algébricas}
+As expressões algébricas são classificadas segundo a natureza das operações às quais as variáveis estão submetidas:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Racionais Inteiras:} Não apresentam variáveis no denominador nem sob radicais. Exemplo: $E(x,y) = 3x^2 - \frac{5}{2}y^3$.
+    \item \textbf{Racionais Fracionárias:} Apresentam variáveis no denominador. Exemplo: $F(x) = \frac{x+1}{x-2}$, definida para $x \neq 2$.
+    \item \textbf{Irracionais:} Apresentam variáveis sujeitas à operação de radiciação. Exemplo: $G(x) = \sqrt{x+1}$, definida para $x \ge -1$.
+\end{itemize}
+
+\subsection{Monômios e Operações Elementares}
+Um \textbf{monômio} é uma expressão algébrica obtida pelo produto de um número real não nulo (denominado \textbf{coeficiente}) por uma sequência finita de potências de variáveis com expoentes inteiros não negativos (denominada \textbf{parte literal}).
+
+O \textbf{grau de um monômio} corresponde à soma dos expoentes de todas as variáveis contidas na sua parte literal. Dois ou mais monômios são ditos \textbf{semelhantes} quando possuem rigorosamente a mesma parte literal.
+
+\begin{destaquebox}
+\textbf{Exemplo 1 -- Operações com Monômios}\\
+Considere os monômios $M_1 = 5ab^2$ e $M_2 = -4a^2b^3c^2$:
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Multiplicação:} $(5ab^2) \cdot (-4a^2b^3c^2) = (5 \cdot (-4)) \cdot (a \cdot a^2) \cdot (b^2 \cdot b^3) \cdot c^2 = -20a^3b^5c^2$.
+    \item \textbf{Divisão:} Para $m, n, p \neq 0$, $\frac{45m^8n^7p^3}{9m^3n^2p} = \left(\frac{45}{9}\right) m^{8-3} n^{7-2} p^{3-1} = 5m^5n^5p^2$.
+\end{enumerate}
+\end{destaquebox}
+
+\section{Representação e Estrutura dos Polinômios}
+
+Define-se como \textbf{polinômio} em uma variável real $x$ toda expressão algébrica dada pela soma finita de monômios da forma:
+\[ P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0 \]
+em que $a_n, a_{n-1}, \dots, a_0 \in \mathbb{R}$ são os coeficientes numéricos do polinômio e $n \in \mathbb{N}$.
+
+Se $a_n \neq 0$, o expoente $n$ define o \textbf{grau do polinômio}, denotado por $\partial P$ ou $\operatorname{gr}(P)$. Quando o coeficiente do termo de maior grau for unitário ($a_n = 1$), o polinômio é dito \textbf{mônico}. Se todos os coeficientes forem nulos ($a_n = \dots = a_0 = 0$), o polinômio é \textbf{identicamente nulo} ($P \equiv 0$), não se definindo grau para este caso.
+
+Dois polinômios $P(x)$ e $Q(x)$ são ditos \textbf{idênticos} ($P \equiv Q$) se, e somente se, os coeficientes de seus termos correspondentes de mesmo grau forem idênticos. Um número real $k$ é denominado \textbf{raiz} ou zero de $P(x)$ se $P(k) = 0$.
+
+\begin{destaquebox}
+\textbf{Exemplo 2 -- Raízes de um Polinômio}\\
+Os números reais $x = 2$ e $x = 5$ são raízes do polinômio $P(x) = x^2 - 7x + 10$, pois:
+\[ P(2) = 2^2 - 7(2) + 10 = 4 - 14 + 10 = 0 \]
+\[ P(5) = 5^2 - 7(5) + 10 = 25 - 35 + 10 = 0 \]
+\end{destaquebox}
+
+\section{Operações Fundamentais com Polinômios}
+
+\subsection{Adição, Subtração e Multiplicação}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Adição e Subtração:} Efetuam-se adicionando ou subtraindo os coeficientes dos termos de mesmo grau. O grau do polinômio resultante satisfaz a desigualdade $\partial(P \pm Q) \le \max\{\partial P, \partial Q\}$.
+    \item \textbf{Multiplicação:} Multiplica-se cada termo de $P(x)$ por todos os termos de $Q(x)$, reduzindo os monômios semelhantes. O grau do produto satisfaz a igualdade $\partial(P \cdot Q) = \partial P + \partial Q$.
+\end{itemize}
+
+\begin{destaquebox}
+\textbf{Exemplo 3 -- Multiplicação de Polinômios}\\
+Efetue o produto de $P(x) = x^2 - 2x + 4$ por $Q(x) = -2x + 2$:
+\[ P(x) \cdot Q(x) = (x^2 - 2x + 4)(-2x + 2) \]
+\[ = x^2(-2x + 2) - 2x(-2x + 2) + 4(-2x + 2) \]
+\[ = -2x^3 + 2x^2 + 4x^2 - 4x - 8x + 8 = -2x^3 + 6x^2 - 12x + 8 \]
+\end{destaquebox}
+
+\section{Divisão de Polinômios e Algoritmo da Divisão}
+
+A divisão entre dois polinômios fundamenta-se na existência e unicidade de dois polinômios característicos, conforme enunciado no teorema a seguir.
+
+\paragraph{Teorema 1 -- Algoritmo da Divisão (Euclidiana)}
+Dados os polinômios $A(x)$ (dividendo) e $B(x) \neq 0$ (divisor), existem únicos polinômios $Q(x)$ (quociente) e $R(x)$ (resto) tais que:
+\[ A(x) = Q(x) \cdot B(x) + R(x) \]
+satisfazendo a condição de parada: $\partial R < \partial B$ ou $R(x) \equiv 0$.
+
+\subsection{Método da Chave}
+O procedimento prático para determinar $Q(x)$ e $R(x)$ consiste em:
+\begin{enumerate}[label=\arabic*.]
+    \item Ordenar dividendo e divisor em ordem decrescente segundo as potências de $x$.
+    \item Preencher com coeficientes nulos os termos ausentes do dividendo.
+    \item Dividir o termo de maior grau do dividendo pelo termo de maior grau do divisor, obtendo um termo de $Q(x)$.
+    \item Multiplicar esse termo pelo divisor, inverter os sinais dos resultados e subtrair do dividendo.
+    \item Repetir o ciclo até obter um resto parcial cujo grau seja estritamente menor que $\partial B$.
+\end{enumerate}
+
+\begin{destaquebox}
+\textbf{Exemplo 4 -- Aplicação do Método da Chave}\\
+Determine o quociente e o resto da divisão de $A(x) = 5x^4 - 4x^2 + 3x - 1$ por $B(x) = x^2 - 3x + 4$.
+
+\textbf{Solução:} Organizando os termos no dispositivo da chave e preenchendo o termo faltante $0x^3$:
+
+\vspace{0.3cm}
+\begin{center}
+\begin{tabular}{r@{\quad}l@{\quad}l}
+$5x^4 + 0x^3 - 4x^2 + 3x - 1$ & \multicolumn{1}{|l}{$x^2 - 3x + 4$} & \\ \cline{2-2}
+\underline{$-(5x^4 - 15x^3 + 20x^2)$} & $5x^2 + 15x + 21$ & $\leftarrow Q(x) \text{ (Quociente)}$ \\
+$15x^3 - 24x^2 + 3x - 1$ & & \\
+\underline{$-(15x^3 - 45x^2 + 60x)$} & & \\
+$21x^2 - 57x - 1$ & & \\
+\underline{$-(21x^2 - 63x + 84)$} & & \\
+$\mathbf{6x - 85}$ & $\leftarrow R(x) \text{ (Resto)}$ & 
+\end{tabular}
+\end{center}
+\vspace{0.3cm}
+
+Portanto, o quociente obtido é $Q(x) = 5x^2 + 15x + 21$ e o resto é $R(x) = 6x - 85$. Como $\partial R = 1 < 2 = \partial B$, o algoritmo é encerrado.
+\end{destaquebox}
+
+\section*{Referências Bibliográficas}
+\begin{enumerate}[label={[\arabic*]},leftmargin=*]
+    \item PARENTE, Ulisses Lima; NETO, Antonio Caminha M. \textbf{Módulo de Expressões Algébricas e Polinômios -- Parte 1}. Portal da Matemática OBMEP.
+    \item LIMA, Elon Lages et al. \textbf{A Matemática do Ensino Médio: Volume 3}. Coleção do Professor de Matemática. Rio de Janeiro: Sociedade Brasileira de Matemática (SBM), 2012.
+\end{enumerate}
+
+\end{document}
