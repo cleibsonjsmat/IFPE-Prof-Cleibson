@@ -1,0 +1,218 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+
+% Margens ajustadas para cabeçalho institucional
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores (Mesma da Apostila)
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro Institucional
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro para Caixas
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda Suave
+\definecolor{correctgreen}{RGB}{40, 140, 60}  % Verde para Gabarito
+
+% Configuração das Caixas (tcolorbox)
+\tcbuselibrary{skins, breakable}
+
+% Contador de Questões
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+% Ambiente de Questão Estilizado
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt, % Linha lateral mais espessa para destaque
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+% Ambiente de Gabarito / Resolução
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+% Comando para gerar linhas de resposta/rascunho
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho com Logo e Disciplina
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Matemática VI \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 1 -- Números Complexos}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Cabeçalho de Identificação do Estudante
+\begin{tcolorbox}[colback=bglight, colframe=primary, boxrule=1pt, arc=3pt]
+  \sffamily\small
+  \begin{tabular}{@{}p{0.65\textwidth} p{0.3\textwidth}@{}}
+    \textbf{Estudante:} \hrulefill & \textbf{Data:} \hrulefill \\[0.25cm]
+    \textbf{Curso/Turma:} \hrulefill & \textbf{Nota/Visto:} \hrulefill
+  \end{tabular}
+\end{tcolorbox}
+
+% Título Principal da Lista
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 4: Polinômios 1} \\[0.1cm]
+  {\small\sffamily\color{gray} Lista Polinômios 1}
+\end{center}
+
+
+\vspace{0.2cm}
+
+\begin{enumerate}
+    \item \textbf{(UFOP-MG--2008)} Sejam os polinômios $p(x) = (a + b)x^4 - 5$ e $q(x) = -2x^4 + (a + c)x^2 + b + c$, em que $a$, $b$ e $c$ são números reais. Suponha que $p(x)$ e $q(x)$ sejam iguais para todo $x \in \mathbb{R}$. Então, $a + b + c$ vale
+    \begin{enumerate}
+        \item[A)] $-7$
+        \item[B)] $-\dfrac{5}{2}$
+        \item[C)] $-2$
+        \item[D)] $-\dfrac{7}{2}$
+    \end{enumerate}
+
+    \item \textbf{(UFMG)} Sejam $p(x) = 4x^3 + bx^2 + cx + d$ e $q(x) = mx^2 + nx - 3$, polinômios com coeficientes reais. Sabe-se que $p(x) = (2x - 6) \cdot q(x) + x - 10$. Considerando-se essas informações, é \textbf{INCORRETO} afirmar que
+    \begin{enumerate}
+        \item[A)] se 10 é raiz de $q(x)$, então 10 também é raiz de $p(x)$.
+        \item[B)] $p(3) = -7$
+        \item[C)] $d = 18$
+        \item[D)] $m = 2$
+    \end{enumerate}
+
+    \item \textbf{(UFMG--2007)} Sejam $p(x) = ax^2 + (a - 15)x + 1$ e $q(x) = 2x^2 - 3x + \dfrac{1}{b}$ polinômios com coeficientes reais. Sabe-se que esses polinômios possuem as mesmas raízes. Então, é \textbf{CORRETO} afirmar que o valor de $a + b$ é
+    \begin{enumerate}
+        \item[A)] $3$
+        \item[B)] $6$
+        \item[C)] $9$
+        \item[D)] $12$
+    \end{enumerate}
+
+    \item \textbf{(UFOP-MG--2007)} O resto da divisão do polinômio $p(x) = x^{99} - 2x + 3$ pelo polinômio $q(x) = x^2 - 1$ é
+    \begin{enumerate}
+        \item[A)] $-x + 3$
+        \item[B)] $6$
+        \item[C)] $8$
+        \item[D)] $3x - 1$
+    \end{enumerate}
+\end{enumerate}
+
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    
+    \item \textbf{(Unifor-CE)} Se os polinômios $f(x) = x^3 + (a - b)x^2 + (a - b - 2)x + 4$ e $g(x) = x^3 + 2ax^2 + (3a - b)$ são idênticos, então
+    \begin{enumerate}
+        \item[A)] $a^b = 3$
+        \item[B)] $a = 3b$
+        \item[C)] $b = 3a$
+        \item[D)] $\dfrac{a}{b} = 1$
+        \item[E)] $ab = -1$
+    \end{enumerate}
+
+    \item \textbf{(UFMG)} Considere o polinômio $p(x) = (x - 1)(x^9 + x^8 + x^7 + x^6 + x^5 + x^4)$. O polinômio $p(x)$ é igual a
+    \begin{enumerate}
+        \item[A)] $x^4(x^3 - 1)(x^3 + 1)$
+        \item[B)] $x^4(x^6 - 2x^4 + 1)$
+        \item[C)] $x^4(x^3 - 1)^2$
+        \item[D)] $x^4(x^6 - 2x^2 + 1)$
+    \end{enumerate}
+
+    \item \textbf{(UFMG)} Considere os polinômios $p(x) = ax^3 + (2a - 3b)x^2 + (a + b + 4c)x - 4bcd$ e $q(x) = 6x^2 + 18x + 5$, em que $a$, $b$, $c$ e $d$ são números reais. Sabe-se que $p(x) = q(x)$, para todo $x \in \mathbb{R}$. Assim sendo, o número $d$ é igual a
+    \begin{enumerate}
+        \item[A)] $\dfrac{1}{8}$
+        \item[B)] $\dfrac{2}{3}$
+        \item[C)] $\dfrac{4}{5}$
+        \item[D)] $3$
+    \end{enumerate}
+
+    \item \textbf{(UFMG)} Sejam $P(x) = x^2 - 4$ e $Q(x) = x^3 - 2x^2 + 5x + a$, em que $Q(2) = 0$. O resto da divisão de $Q(x)$ por $P(x)$ é
+    \begin{enumerate}
+        \item[A)] $-x - 2$
+        \item[B)] $9x - 18$
+        \item[C)] $x + 2$
+        \item[D)] $0$
+        \item[E)] $-9x + 18$
+    \end{enumerate}
+
+    \item \textbf{(PUC Rio)} Se $x^2 + 2x + 5$ divide $x^4 + px^2 + q$ exatamente (isto é, o resto da divisão do segundo polinômio pelo primeiro é zero), então
+    \begin{enumerate}
+        \item[A)] $p = -2$ e $q = 5$
+        \item[B)] $p = 5$ e $q = 25$
+        \item[C)] $p = 10$ e $q = 20$
+        \item[D)] $p = 6$ e $q = 25$
+        \item[E)] $p = 14$ e $q = 25$
+    \end{enumerate}
+
+    \item \textbf{(UFJF-MG)} Ao dividirmos um polinômio $p(x)$ por outro polinômio $q(x)$ encontramos um resto $r(x) = x - 1$. É \textbf{CORRETO} afirmar que o
+    \begin{enumerate}
+        \item[A)] grau de $p(x)$ é igual a 2.
+        \item[B)] grau de $q(x)$ é igual a 2.
+        \item[C)] grau de $q(x)$ é maior que 1.
+        \item[D)] grau de $p(x)$ é igual a 1.
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
