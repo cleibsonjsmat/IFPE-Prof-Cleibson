@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt} % Espessura da linha divisória
+\renewcommand{\columnseprulecolor}{\color{borderlight}} % Cor da linha (opcional)
+
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+\definecolor{borderlight}{RGB}{210, 220, 230}
+\definecolor{correctgreen}{RGB}{40, 140, 60}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boxfixacao}[1]{
+  enhanced,
+  colback=bglight,
+  colframe=primary,
+  arc=3pt,
+  boxrule=1pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=primary,
+  breakable
+}
+
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \small\sffamily
+  \textbf{IFPE -- Campus Caruaru}
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo 1 \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 4 -- Regras de Derivação}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 4: Regras de Derivação} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios sobre regras de derivação}
+\end{center}
+
+\vspace{0.2cm}
+
+
+\section*{Lista 04 - Regras de Derivação}
+
+\begin{enumerate}
+    \item Calcule as derivadas:
+    \begin{enumerate}
+        \item $y = (2x^3 - x^2 + 1)(x - 4)$
+        \item $y = \dfrac{3x^2 + 1}{x^3 - 2}$
+        \item $y = e^{x^2}$
+        \item $y = \ln(\sin x)$
+    \end{enumerate}
+
+    \item Aplique a regra da cadeia e interprete o resultado:
+    \begin{enumerate}
+        \item $y = \sin(3x^2 + 2x)$ — qual o significado da derivada em termos da variação de $x$?
+        \item $y = \sqrt{1 + e^{2x}}$ — como a função cresce em comparação com $e^x$?
+    \end{enumerate}
+
+    \item Uma partícula move-se segundo $s(t) = t e^t$, onde $s$ é a posição em metros e $t$ em segundos.
+    \begin{enumerate}
+        \item Determine a velocidade instantânea em $t = 1$.
+        \item Interprete o valor encontrado em termos físicos.
+    \end{enumerate}
+
+    \item O custo de um produto é dado por $C(x) = x^3 - 6x^2 + 9x$. Determine:
+    \begin{enumerate}
+        \item $C'(x)$, a taxa de variação marginal do custo.
+        \item O ponto em que o custo cresce mais rapidamente.
+    \end{enumerate}
+
+    \item Uma curva é dada por $y = e^x \cos x$. Determine $y'$ e descreva qualitativamente como o comportamento oscilatório da função se mistura com o crescimento exponencial.
+
+   \item Um corpo se move segundo $s(t) = t^3 - 6t^2 + 9t + 2$ (SI).  
+    Determine:
+    \begin{enumerate}
+        \item As expressões para velocidade e aceleração.  
+        \item Os instantes em que o corpo muda o sentido do movimento.  
+        \item O intervalo de tempo em que o corpo está se afastando da origem.
+    \end{enumerate}
+
+    \item A resistência de um fio condutor depende da temperatura pela expressão $R(T) = R_0(1 + 0{,}004T)$.  
+    Calcule $R'(T)$ e interprete o resultado para $R_0 = 10\,\Omega$ em $T = 50^\circ$C.
+
+    \item Uma peça cilíndrica deve ter volume constante $V = 1000\,\text{cm}^3$.  
+    Determine as dimensões (raio e altura) que minimizam a área da superfície total do cilindro.  
+    (Sugestão: escreva $A(r) = 2\pi r^2 + \frac{2V}{r}$ e derive.)
+
+    \item Uma barra metálica aquecida uniformemente sofre deformação segundo $y(x) = x^3 - 6x^2 + 9x$.  
+    Determine os pontos onde a deformação é máxima e mínima e discuta o significado mecânico desses pontos.
+
+    \item O rendimento de uma turbina hidráulica pode ser modelado por $\eta(v) = v e^{-0{,}1v}$, onde $v$ é a velocidade do fluido (m/s).  
+    Determine a velocidade que maximiza o rendimento da turbina e o valor máximo de $\eta$.
+
+
+
+\end{enumerate}
+
+  
+\end{document}
