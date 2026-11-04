@@ -1,0 +1,197 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{tasks}
+
+% Configuração global das alternativas com o pacote tasks
+\settasks{
+  label=\textbf{\Alph*)},
+  label-width=1.5em,
+  label-offset=0.3em,
+  item-indent=0pt,
+  column-sep=1.2em
+}
+
+% Margens ajustadas para cabeçalho institucional
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro Institucional
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro para Caixas
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda Suave
+\definecolor{correctgreen}{RGB}{40, 140, 60}  % Verde para Gabarito
+
+% Configuração das Caixas (tcolorbox)
+\tcbuselibrary{skins, breakable}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho com Logo e Disciplina
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Matemática VI \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 4 -- Polinômios 1}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Cabeçalho de Identificação do Estudante
+\begin{tcolorbox}[colback=bglight, colframe=primary, boxrule=1pt, arc=3pt]
+  \sffamily\small
+  \begin{tabular}{@{}p{0.65\textwidth} p{0.3\textwidth}@{}}
+    \textbf{Estudante:} \hrulefill & \textbf{Data:} \hrulefill \\[0.25cm]
+    \textbf{Curso/Turma:} \hrulefill & \textbf{Nota/Visto:} \hrulefill
+  \end{tabular}
+\end{tcolorbox}
+
+% Título Principal da Lista
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 5: Polinômios 2} \\[0.1cm]
+  {\small\sffamily\color{gray} Teorema do Resto, Teorema de D'Alembert e Dispositivo de Briot-Ruffini}
+\end{center}
+
+\vspace{0.1cm}
+
+\begin{enumerate}[leftmargin=*, itemsep=0.35cm]
+  
+% Exercício 01
+    \item \textbf{(PUC Minas)} O resto da divisão de $P(x) = ax^3 - 2x + 1$ por $Q(x) = x - 3$ é 4. Nessas condições, o valor de $a$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $\dfrac{1}{3}$
+        \item $\dfrac{1}{2}$
+        \item $\dfrac{2}{3}$
+        \item $\dfrac{3}{2}$
+    \end{enumerate}
+
+    % Exercício 02
+    \item \textbf{(UFJF-MG--2006)} O polinômio $p(x)$ é divisível por $x + 3$, por $x - 1$ e por $x + 5$. Podemos dizer que o seu grau $g$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $g > 3$
+        \item $g < 3$
+        \item $g \ge 3$
+        \item $g = 3$
+        \item $g \le 3$
+    \end{enumerate}
+
+    % Exercício 03
+    \item \textbf{(UEL-PR)} Sobre um polinômio $p(x)$ de grau 1, sabe-se que
+    \begin{enumerate}[label=\Roman*.]
+        \item sua raiz é igual a 2
+        \item $p(-2)$ é igual ao dobro de sua raiz
+    \end{enumerate}
+    Nessas condições, é \textbf{CORRETO} afirmar:
+    \begin{enumerate}[label=\Alph*)]
+        \item $p(x) = -x + 2$
+        \item $p(x) = 2x - 4$
+        \item $p(x) = x - 2$
+        \item $p(x) = x^2 - x - 2$
+        \item $p(x) = -x^2 + x + 2$
+    \end{enumerate}
+
+    % Exercício 05
+    \setcounter{enumii}{4} % Ajusta a numeração para ir direto ao 05
+    \item \textbf{(PUCPR)} Se o polinômio $x^4 + px^2 + q$ é divisível pelo polinômio $x^2 - 6x + 5$, então $p + q$ vale
+    \begin{enumerate}[label=\Alph*)]
+        \item $-1$
+        \item $3$
+        \item $5$
+        \item $-4$
+        \item $10$
+    \end{enumerate}
+
+    % Exercício 06
+    \item \textbf{(PUC RS)} A divisão do polinômio $p(x) = x^5 - 2x^4 - x + m$ por $q(x) = x - 1$ é exata. O valor de $m$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $-2$
+        \item $-1$
+        \item $0$
+        \item $1$
+        \item $2$
+    \end{enumerate}
+
+    % Exercício 08
+    \setcounter{enumii}{7} % Ajusta a numeração para ir direto ao 08
+    \item \textbf{(AFA-SP)} O parâmetro $a$, de modo que o resto da divisão de $5x^3 + (2a-3)x^2 + ax - 2$ por $x + 2$ seja 6, é igual a
+    \begin{enumerate}[label=\Alph*)]
+        \item $9$
+        \item $10$
+        \item $11$
+        \item $12$
+    \end{enumerate}
+
+    % Exercício 09
+    \item \textbf{(UFLA-MG--2009)} O polinômio $x^3 + ax^2 + x + b$ é divisível por $x^2 + 2x - 3$. Então, o valor de $a - b$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $2$
+        \item $-10$
+        \item $10$
+        \item $-2$
+        \item $1$
+    \end{enumerate}
+
+    % Exercício 10
+    \item \textbf{(UFJF-MG)} O resto da divisão do polinômio $p(x) = 3x^2 - 17x + 27$ por $q(x) = x - 4$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $4$
+        \item $7$
+        \item $2x$
+        \item $5$
+        \item $5x - 20$
+    \end{enumerate}
+
+    % Exercício 11
+    \item \textbf{(ITA-SP)} A divisão de um polinômio $P(x)$ por $x^2 - x$ resulta no quociente $6x^2 + 5x + 3$ e resto $-7x$. O resto da divisão de $P(x)$ por $2x + 1$ é igual a
+    \begin{enumerate}[label=\Alph*)]
+        \item $1$
+        \item $2$
+        \item $3$
+        \item $4$
+        \item $5$
+    \end{enumerate}
+
+    % Exercício 12
+    \item \textbf{(UFJF-MG)} Um polinômio $p(x)$ dividido por $x - 1$ deixa resto 2. O quociente desta divisão é, então, dividido por $x - 4$, obtendo resto 1. O resto da divisão de $p(x)$ por $(x - 1)(x - 4)$ é
+    \begin{enumerate}[label=\Alph*)]
+        \item $1$
+        \item $2$
+        \item $x + 1$
+        \item $x - 1$
+        \item $2x - 1$
+    \end{enumerate}
+
+
+\end{enumerate}
+\textbf{Gabarito:} 1) A\quad 2) C\quad 3) A\quad 4) A\quad 5) E\quad 6) B\quad 7) C\quad 8) B\quad 9) E\quad 10) C
+\end{document}
