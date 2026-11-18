@@ -1,0 +1,188 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt} % Espessura da linha divisória
+\renewcommand{\columnseprulecolor}{\color{borderlight}} % Cor da linha (opcional)
+
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+\definecolor{borderlight}{RGB}{210, 220, 230}
+\definecolor{correctgreen}{RGB}{40, 140, 60}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boxfixacao}[1]{
+  enhanced,
+  colback=bglight,
+  colframe=primary,
+  arc=3pt,
+  boxrule=1pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=primary,
+  breakable
+}
+
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \small\sffamily
+  \textbf{IFPE -- Campus Caruaru}
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo 1 \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 4 -- Regras de Derivação}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+
+\vspace{0.2cm}
+
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 5: Integrais Indefinidas} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios sobre integrais indefinidas}
+\end{center}
+
+
+
+
+\vspace{0.4cm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=1.2em, leftmargin=*]
+    
+    \item \textbf{(Potência direta)}
+    \[ \int \left( 4x^3 - 6x^2 + 5x - 2 \right) dx \]
+
+    \item \textbf{(Radicais simples)}
+    \[ \int \left( \sqrt{x} + \frac{1}{\sqrt{x}} \right) dx \]
+
+    \item \textbf{(Divisão polinomial)}
+    \[ \int \frac{x^4 - 3x^2 + 7}{x^2} \, dx \]
+
+    \item \textbf{(Expansão algébrica)}
+    \[ \int (2x - 3)^2 \, dx \]
+
+    \item \textbf{(Potências fracionárias e negativas)}
+    \[ \int \left( \frac{5}{x^3} - \frac{2}{\sqrt[3]{x}} \right) dx \]
+
+    \item \textbf{(Função exponencial e recíproca)}
+    \[ \int \left( 3e^x + \frac{4}{x} \right) dx \]
+
+    \item \textbf{(Trigonometria fundamental)}
+    \[ \int (5\sin x - 2\cos x) \, dx \]
+
+    \item \textbf{(Identidades trigonométricas imediatas)}
+    \[ \int (3\sec^2 x + 4\csc^2 x) \, dx \]
+
+    \item \textbf{(Produto trigonométrico)}
+    \[ \int \sec x (\sec x + \tan x) \, dx \]
+
+    \item \textbf{(Simplificação de frações com radicais)}
+    \[ \int \frac{x - 2\sqrt{x}}{\sqrt{x}} \, dx \]
+
+\end{enumerate}
+
+\vspace{0.8cm}
+\hrule height 0.5pt
+\vspace{0.4cm}
+
+\begin{center}
+    {\Large \textbf{\color{primary} Gabarito}}
+\end{center}
+
+\vspace{0.2cm}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, itemsep=0.6em, leftmargin=*]
+    \item $x^4 - 2x^3 + \frac{5}{2}x^2 - 2x + C$
+    \item $\frac{2}{3}x^{3/2} + 2\sqrt{x} + C = \frac{2}{3}x\sqrt{x} + 2\sqrt{x} + C$
+    \item $\frac{x^3}{3} - 3x - \frac{7}{x} + C$
+    \item $\frac{4}{3}x^3 - 6x^2 + 9x + C$
+    \item $-\frac{5}{2x^2} - 3x^{2/3} + C$
+    \item $3e^x + 4\ln|x| + C$
+    \item $-5\cos x - 2\sin x + C$
+    \item $3\tan x - 4\cot x + C$
+    \item $\tan x + \sec x + C$
+    \item $\frac{2}{3}x^{3/2} - 2x + C = \frac{2}{3}x\sqrt{x} - 2x + C$
+\end{enumerate}
+
+\end{document}

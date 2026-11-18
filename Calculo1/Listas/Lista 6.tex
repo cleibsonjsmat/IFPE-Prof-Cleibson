@@ -1,0 +1,173 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{multicol}
+\usepackage{multicol}
+\setlength{\columnseprule}{0.4pt} % Espessura da linha divisória
+\renewcommand{\columnseprulecolor}{\color{borderlight}} % Cor da linha (opcional)
+
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+\definecolor{primary}{RGB}{10, 45, 90}
+\definecolor{secondary}{RGB}{25, 110, 180}
+\definecolor{bglight}{RGB}{245, 247, 250}
+\definecolor{borderlight}{RGB}{210, 220, 230}
+\definecolor{correctgreen}{RGB}{40, 140, 60}
+
+\tcbuselibrary{skins, breakable}
+
+\newtcolorbox{boxfixacao}[1]{
+  enhanced,
+  colback=bglight,
+  colframe=primary,
+  arc=3pt,
+  boxrule=1pt,
+  title={#1},
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white,
+  colbacktitle=primary,
+  breakable
+}
+
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt,
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{%
+  \small\sffamily
+  \textbf{IFPE -- Campus Caruaru}
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo 1 \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 6 -- Integrais por Substituição}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+
+\vspace{0.2cm}
+
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 6: Integrais por substituição} \\[0.1cm]
+  {\small\sffamily\color{gray} Exercícios sobre integrais por substituição}
+\end{center}
+
+
+
+
+\vspace{0.4cm}
+
+\begin{enumerate}
+ \item Nas questões abaixo calcule a integral fazendo a substituição dada.
+ 
+ 
+ \begin{enumerate}
+
+\item $\displaystyle \int x(4 + x^2)^{10} \, dx, \quad u = 4 + x^2$
+
+\item $\displaystyle \int \frac{dt}{(1 - 6t)^4}, \quad u = 1 - 6t$
+
+\item $\displaystyle \int e^{\operatorname{sen} \theta} \cos \theta \, d\theta, \quad u = \operatorname{sen} \theta$
+
+\end{enumerate}
+
+\item Calcule a integral indefinida.
+
+\begin{enumerate}
+
+    \item $\displaystyle \int x^2(x^3 + 5)^9 \, dx$
+
+    \item $\displaystyle \int (3t + 2)^{2.4} \, dt$
+
+    \item $\displaystyle \int \frac{x}{(x^2 + 1)^2} \, dx$
+
+    \item $\displaystyle \int e^x \operatorname{sen}(e^x) \, dx$
+
+    \item $\displaystyle \int \frac{x}{x^2 + 1} \, dx$
+
+    \item $\displaystyle \int \sec 2\theta \operatorname{tg} 2\theta \, d\theta$
+
+    \item $\displaystyle \int \frac{dx}{ax + b} \quad (a \neq 0)$
+
+    \item $\displaystyle \int \sqrt{x} \operatorname{sen}(1 + x^{3/2}) \, dx$
+
+    \item $\displaystyle \int (1 + \operatorname{tg} \theta)^5 \sec^2 \theta \, d\theta$
+
+    \item $\displaystyle \int e^{\cos t} \operatorname{sen} t \, dt$
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
