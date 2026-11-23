@@ -1,0 +1,139 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{totpages}
+\usepackage{titlesec}
+
+% Margens ajustadas para cabeçalho institucional
+\geometry{top=3.5cm, bottom=2.5cm, left=2.0cm, right=2.0cm, headheight=2.6cm}
+
+% Paleta de Cores (Mesma da Apostila)
+\definecolor{primary}{RGB}{10, 45, 90}       % Azul Escuro Institucional
+\definecolor{secondary}{RGB}{25, 110, 180}   % Azul Destaque
+\definecolor{bglight}{RGB}{245, 247, 250}    % Cinza Claro para Caixas
+\definecolor{borderlight}{RGB}{210, 220, 230}% Borda Suave
+\definecolor{correctgreen}{RGB}{40, 140, 60}  % Verde para Gabarito
+
+% Configuração das Caixas (tcolorbox)
+\tcbuselibrary{skins, breakable}
+
+% Contador de Questões
+\newcounter{numquestao}
+\setcounter{numquestao}{0}
+
+% Ambiente de Questão Estilizado
+\newenvironment{questao}[2][]{%
+  \refstepcounter{numquestao}%
+  \vspace{0.3cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=secondary,
+    arc=2pt,
+    boxrule=0.8pt,
+    leftrule=4pt, % Linha lateral mais espessa para destaque
+    title={\textbf{Questão \thenumquestao} \ifstrempty{#2}{}{--- #2} \hfill \small\textnormal{#1}},
+    fonttitle=\sffamily\bfseries\color{white},
+    coltitle=white,
+    colbacktitle=secondary,
+    breakable
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+% Ambiente de Gabarito / Resolução
+\newenvironment{gabarito}{%
+  \vspace{0.1cm}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=bglight,
+    colframe=correctgreen,
+    arc=2pt,
+    boxrule=0.6pt,
+    title={\small\sffamily\bfseries Resolução / Gabarito},
+    fonttitle=\sffamily\color{white},
+    colbacktitle=correctgreen,
+    breakable
+  ]%
+  \small
+}{%
+  \end{tcolorbox}%
+}
+
+% Comando para gerar linhas de resposta/rascunho
+\newcommand{\espacoresposta}[1]{%
+  \vspace{#1}%
+}
+
+% Configuração de Cabeçalho e Rodapé
+\pagestyle{fancy}
+\fancyhf{}
+
+% Cabeçalho com Logo e Disciplina
+\fancyhead[L]{%
+  \includegraphics[height=2cm]{Imagens/logocaruaru.png}%
+}
+\fancyhead[R]{%
+  \small\sffamily
+  \textbf{Instituto Federal de Pernambuco -- Campus Caruaru} \\
+  \textcolor{secondary}{Disciplina:} Cálculo I \\
+  \textcolor{secondary}{Prof.:} Cleibson José da Silva
+}
+
+% Rodapé
+\fancyfoot[L]{\small\sffamily\color{gray}Lista 7 -- Volumes}
+\fancyfoot[R]{\small\sffamily\color{gray}Página \thepage\ de \ref{TotPages}}
+
+% Linhas divisórias
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{{\color{primary}\hrule width\headwidth height \headrulewidth}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=secondary,
+    urlcolor=secondary,
+    citecolor=primary
+}
+
+\begin{document}
+
+% Cabeçalho de Identificação do Estudante
+\begin{tcolorbox}[colback=bglight, colframe=primary, boxrule=1pt, arc=3pt]
+  \sffamily\small
+  \begin{tabular}{@{}p{0.65\textwidth} p{0.3\textwidth}@{}}
+    \textbf{Estudante:} \hrulefill & \textbf{Data:} \hrulefill \\[0.25cm]
+    \textbf{Curso/Turma:} \hrulefill & \textbf{Nota/Visto:} \hrulefill
+  \end{tabular}
+\end{tcolorbox}
+
+% Título Principal da Lista
+\begin{center}
+  {\LARGE\bfseries\color{primary} Lista 7: Volumes} \\[0.1cm]
+  {\small\sffamily\color{gray} Volumes de Sólidos de Revolução}
+\end{center}
+
+\vspace{0.2cm}
+
+
+
+\textbf{1--6} Encontre o volume do sólido obtido pela rotação da região limitada pelas curvas dadas em torno das retas especificadas. Esboce a região, o sólido e um disco ou arruela típicos.
+
+\begin{enumerate}
+    \item $y = 2 - \frac{1}{2}x, \; y = 0, \; x = 1, \; x = 2; \quad \text{em torno do eixo } x$
+    \item $y = e^x, \; y = 0, \; x = 0, \; x = 1; \quad \text{em torno do eixo } x$
+    \item $y = 1/x, \; x = 1, \; x = 2, \; y = 0; \quad \text{em torno do eixo } x$
+    \item $y = \sqrt{25 - x^2}, \; y = 0, \; x = 2, \; x = 4; \quad \text{em torno do eixo } x$
+    \item $x = 2\sqrt{y}, \; x = 0, \; y = 9; \quad \text{em torno do eixo } y$
+    \item $y = \ln x, \; y = 1, \; y = 2, \; x = 0; \quad \text{em torno do eixo } y$
+\end{enumerate}
+
+\end{document}
